@@ -20,6 +20,7 @@
                         php artisan make:model Post -a
                         php artisan make:model Post -a --api
                         php artisan make:model Comment -a --api
+                        php artisan make:migration create_post_user_table --create=post_user
 
         50:24 Ep07 - Seed and Factories | Laravel API Server
         1:04:03 Ep08 - All about models and relationships
