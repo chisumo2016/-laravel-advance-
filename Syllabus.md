@@ -186,8 +186,38 @@
 
     Mutator 
      Is the function which allow to transform our model attributes
-             Accessor   Read and transform values;
-             Mutator    Transform value before we store  into database
+             Accessor   Read and transform values from database;
+                Syntax:
+                        public  function  getTitleUpperCaseAttribute()
+                        {
+                            return strtoupper($this->title);
+                        }
+
+
+              Test
+                    php artisan tinker
+
+                    >>> \App\Models\Post::find(1)->title_upper_case;
+
+            Mutator    Transform value before we store  into database
+
+            public  function  setTitleAttribute($value)
+            {
+              $this->attributes['title'] = strtolower($value);
+            }
+
+           Test
+                    php artisan tinker
+
+                    $post = \App\Models\Post::find(1);
+                    $post->title = "HEYYAAA";
+                     $post;
+
+                Summary 
+                Mutator
+                Accessor
+                Relationship
+                Casting
 
         1:17:19 Ep09 - Seeding relationships
         1:26:14 Ep10 - RESTful API Route Design and Laravel Routes

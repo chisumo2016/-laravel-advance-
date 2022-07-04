@@ -14,6 +14,16 @@ class Post extends Model
         'body' => 'array'
     ];
 
+    public  function  getTitleUpperCaseAttribute()
+    {
+        return strtoupper($this->title);
+    }
+
+    public  function  setTitleAttribute($value)
+    {
+      $this->attributes['title'] = strtolower($value);
+    }
+
     public  function  comments()
     {
         return $this->hasMany(
