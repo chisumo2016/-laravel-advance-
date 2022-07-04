@@ -13,4 +13,22 @@ class Comment extends Model
     protected $casts = [
         'body' => 'array'
     ];
+
+    public  function  post()
+    {
+        return $this->belongsTo(
+            related: Post::class,
+            foreignKey: 'post_id'
+        );
+    }
+
+
+    public  function  user()
+    {
+        return $this->belongsTo(
+            related: User::class,
+            foreignKey: 'user_id'
+        );
+    }
+
 }

@@ -42,4 +42,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public  function  comments()
+    {
+        return $this->hasMany(
+            related:   Comment::class,
+            foreignKey: 'post_id'
+        );
+    }
+
+    public  function  posts()
+    {
+        return $this->belongsToMany(
+            related:        Post::class,
+            table:          'post_user',
+            foreignPivotKey: 'user_id',
+            relatedPivotKey: 'post_id'
+        );
+    }
 }
