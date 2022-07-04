@@ -27,7 +27,58 @@
                 The artisan console is a wondeerful tool to generate boilerplate for our project
 
         50:24 Ep07 - Seed and Factories | Laravel API Server
+                        php artisan make:seeder UserSeedeer 
+                        php artisan db:seed
+                        php artisan migrate:fresh --seed   
+                 
+                Goes in the Seeder class of each class
+                      Disable Check of FK
+                 DB::statement('SET FOREIGN_KEY_CHECKS= 0');
+                 DB::table('users')->truncate();
+                ---------CODE-----
+
+                  Unable Check of FK
+                 DB::statement('SET FOREIGN_KEY_CHECKS= 1');
+
+           Create a folder Called Traits -> seeders Folder -> Class ->TruncateTable.php
+           Call the truncateTable Trait inside the UserSeeder.php
+                use TruncateTable;
+                
+          Create a folder Called Traits -> seeders Folder -> Class -> DisableForeignKeys.php
+          Call the DisableForeignKeys Trait inside the UserSeeder.php
+                use DisableForeignKeys;
+         
+         Override our title
+                Post::factory(3)->create();
+                Post::factory(3)->state(['title' => 'untitled'])->create();
+                
+                 php artisan db:seed    
+
+        Or we can create this state in PostFactory class
+                 public  function  untitled()
+                    {
+                        return $this->state(['title' => 'untitled']);
+                    }
+          use it inside the PostSeeder,call the untitled method
+                Post::factory(3)->state(['title' => 'untitled'])->create();
+                Post::factory(3)->untitled()->create();
+
+        Seeding is referred to populating the datbase with dummy data
+        Factory classes are used to generate fake models
+        We put the main seeding logic in the classed called Seeder
+        We cann use the db:seed Artisann command to trigger the seeders.
+
+
         1:04:03 Ep08 - All about models and relationships
+                Consider to factors 
+                        Parent
+                        Child
+                Post has many Comments
+                        Child Comments has the FK
+                
+               
+
+
         1:17:19 Ep09 - Seeding relationships
         1:26:14 Ep10 - RESTful API Route Design and Laravel Routes
         1:39:35 Ep11 - Controllers
