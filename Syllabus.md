@@ -21,6 +21,10 @@
                         php artisan make:model Post -a --api
                         php artisan make:model Comment -a --api
                         php artisan make:migration create_post_user_table --create=post_user
+                Migration is a cconcept of version control for database;
+                Laravel will run mmigration files in chronological order, ie by following the
+                 timestamp in the migration file name .
+                The artisan console is a wondeerful tool to generate boilerplate for our project
 
         50:24 Ep07 - Seed and Factories | Laravel API Server
         1:04:03 Ep08 - All about models and relationships
