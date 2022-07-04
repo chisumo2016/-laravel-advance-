@@ -2,7 +2,10 @@
 declare(strict_types =1);
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
+use Database\Factories\Helpers\FactoryHelper;
 use Database\Seeders\Traits\DisableForeignKeys;
 use Database\Seeders\Traits\TruncateTable;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,7 +26,12 @@ class PostSeeder extends Seeder
 
         $this->truncate('posts');
 
-        Post::factory(3)->untitled()->create();
+        $posts = Post::factory(3)->untitled()->create(); //collection
+
+        /**Many to Many Post & User*/
+        $posts->each(function (Post $post){
+          $post->users()->sync([FactoryHelper::getRandomModelId(User::class)]);
+        });
 
         $this->enableForeignKeys();
     }
