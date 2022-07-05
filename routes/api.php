@@ -13,44 +13,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/users', function (Request $request){
-    //dump($request);
+//Route::apiResource('users',  \App\Http\Controllers\UserController::class);
 
-   return new \Illuminate\Http\JsonResponse([
-       'data' => 'aaasss'
-   ]);
-});
-
-
-Route::get('/users/{$user}', function (\App\Models\User $user){
-    return new \Illuminate\Http\JsonResponse([
-        'data' => $user
-    ]);
-});
-
-
-Route::post('/users', function (){
-    return new \Illuminate\Http\JsonResponse([
-        'data' => 'posted'
-    ]);
-
-});
-
-
-Route::patch('/users/{user}', function (\App\Models\User $user){
-    return new \Illuminate\Http\JsonResponse([
-        'data' => "patched"
-    ]);
-
-});
-
-
-Route::delete('/users/{user}', function (\App\Models\User $user){
-
-    return new \Illuminate\Http\JsonResponse([
-        'data' => "deleted"
-    ]);
-});
+Route::get('/users',[\App\Http\Controllers\UserController::class, 'index']);
+Route::get('/users/{user}',[\App\Http\Controllers\UserController::class, 'show']);
+Route::post('/users', [\App\Http\Controllers\UserController::class, 'store']);
+Route::patch('/users/{user}', [\App\Http\Controllers\UserController::class, 'update']);
+Route::delete('/users/{user}', [\App\Http\Controllers\UserController::class, 'destroy']);
 
 
 
