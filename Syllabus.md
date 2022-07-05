@@ -891,11 +891,62 @@
         operations when all of them passed . It will rollback annt changes if one of the operations failed .
 
     We use transaction() method in the DB facade to trigger a transaction .
+                  $postCreated = DB::transaction(function () use ($request){
+
+                    $postCreated = Post::query()->create([
+                        'title' => $request->title,
+                        'body'  => $request->body
+                    ]);
+        
+                    /** Associate with a user into pivot table*/
+                    $postCreated->users()->sync($request->user_ids);
+        
+                    return $postCreated;
+        
+                });
+                return  new JsonResponse([
+                    'data' => $postCreated
+                ]);
+
+
+        2:20:00 Ep16 - Laravel Resource Class | API Resource | Robust API Response
+        Link: https://laravel.com/docs/9.x/eloquent-resources
+
+            If  we have many fields in the PostController , our JsonResponse will be mess.
+
+                  return  new JsonResponse([
+                     'data' => $posts
+                 ]);
+
+           The solution of above is to use the resource class
+            Command to create resource class
+                 php artisan make:resource  PostResource
+
+                        public function toArray($request)
+                            {
+                                return [
+                                    'id'    => $this->id,
+                                    'title' => $this->title,
+                                    'body'  => $this->body,
+                                ];
+                            }
+
+           In show() of PostConntroller
+                 public function show(Post $post)
+                    {
+                        return  new JsonResponse([
+                            'data' =>$post
+                        ]);
+                    }
+                  Convert into this 
+
+                    public function show(Post $post)
+                    {
+                         return  new PostResource($post);
+                    }
 
 
 
-
-        2:20:00 Ep16 - Laravel Resource Class | API Resource
         2:24:49 Ep17 - Pagination
         2:30:34 Ep18 - Repository pattern
         2:37:32 Ep19 - Exception
