@@ -17,8 +17,10 @@ class CommentController extends Controller
      */
     public function index()
     {
-        return new \Illuminate\Http\JsonResponse([
-            'data' => 'aaasss'
+        $posts = Comment::query()->get();
+
+        return  new JsonResponse([
+            'data' => $posts
         ]);
     }
 
@@ -30,8 +32,13 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        return new \Illuminate\Http\JsonResponse([
-            'data' => 'posted'
+        $commentCreated = Comment::query()->create([
+            'body'      => $request->body,
+             'user_id'  =>  $request->user_id
+        ]);
+
+        return  new JsonResponse([
+            'data' => $commentCreated
         ]);
     }
 
@@ -43,7 +50,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        return new \Illuminate\Http\JsonResponse([
+        return  new JsonResponse([
             'data' => $comment
         ]);
     }
@@ -57,8 +64,22 @@ class CommentController extends Controller
      */
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
-        return new \Illuminate\Http\JsonResponse([
-            'data' => "patched"
+        $updateComment = $comment->update([
+            'body'        =>  $request->body        ??   $comment->body,
+            'user_id'     =>  $request->user_id     ??  $comment->user_id,
+
+        ]);
+
+        if (!$updateComment){
+            return  new JsonResponse([
+                'errors' => [
+                    'Failed to updated the record model'
+                ]
+            ], 400);
+        }
+
+        return  new  JsonResponse([
+            'data' => $comment
         ]);
     }
 
@@ -70,8 +91,19 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        return new \Illuminate\Http\JsonResponse([
-            'data' => "deleted"
+        $deletedComment = $comment->forceDelete();
+
+        if (!$deletedComment){
+            return  new JsonResponse([
+                'errors' => [
+                    'Could not delete the record'
+                ]
+            ], 400);
+        }
+
+        return  new  JsonResponse([
+            'data' => 'success'
         ]);
+
     }
 }
