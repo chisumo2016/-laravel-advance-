@@ -17,10 +17,10 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $posts = Comment::query()->get();
+        $comments = Comment::query()->get();
 
         return  new JsonResponse([
-            'data' => $posts
+            'data' => $comments
         ]);
     }
 
@@ -33,8 +33,8 @@ class CommentController extends Controller
     public function store(StoreCommentRequest $request)
     {
         $commentCreated = Comment::query()->create([
-            'body'      => $request->body,
-             'user_id'  =>  $request->user_id
+                //'title' => $request->title,
+                'body'  =>  $request->body
         ]);
 
         return  new JsonResponse([
@@ -65,8 +65,8 @@ class CommentController extends Controller
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
         $updateComment = $comment->update([
-            'body'        =>  $request->body        ??   $comment->body,
-            'user_id'     =>  $request->user_id     ??  $comment->user_id,
+            //'title'       =>  $request->title    ??   $comment->title,
+            'body'        =>  $request->body     ??   $comment->body,
 
         ]);
 

@@ -828,11 +828,28 @@
           Test our Code in Postman
                 DELETE : http://laravel-advance.test/api/v1/test/posts/4
 
+          You can appends the attribute to an api json in post model
 
+                 protected  $appends = [
+                    'title_upper_case'
+                ];
 
+                protected  $appends = [
+                    'title_upper_case'
+                ];
+                
+                protected  $hidden = ['title'];
+                protected  $guarded = [];
 
+       Laravel ORM - eloquent provides an easy API for us to work with database
+        We use the query method to start a database query, get() to retrieve records,
+          find() to find by id create() to insert record, update() to update annd delete() to detele .
 
+       Laravel protects the model fields from mass assigmennt by default. To enable mass assigment, we
+        will need to define the $fillable property in the model .
 
+        $hidden will hide model fields whenn we convert the model into an array , and $append will add 
+        extra fields to the array.
 
 
             
