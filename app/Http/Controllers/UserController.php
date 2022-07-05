@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -11,15 +12,17 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return JsonResponse
+     * @return ResourceCollection
      */
     public function index()
     {
         $users = User::query()->get();
 
-        return  new JsonResponse([
+        return  UserResource::collection($users);
+
+        /*return  new JsonResponse([
             'data' => $users
-        ]);
+        ]);*/
     }
 
     /**
@@ -36,7 +39,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return UserResource | JsonResponse
      */
     public function store(Request $request)
     {
@@ -46,22 +49,18 @@ class UserController extends Controller
             'password'  => $request->password
         ]);
 
-        return  new JsonResponse([
-            'data' => $UserCreated
-        ]);
+        return  new  UserResource($UserCreated);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\JsonResponse
+     * @return UserResource| JsonResponse
      */
     public function show(User $user)
     {
-        return  new JsonResponse([
-            'data' =>$user
-        ]);
+        return  new UserResource($user);
     }
 
     /**
@@ -80,7 +79,7 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\JsonResponse
+     * @return UserResource | JsonResponse
      */
     public function update(Request $request, User $user)
     {
@@ -98,9 +97,7 @@ class UserController extends Controller
             ], 400);
         }
 
-        return  new  JsonResponse([
-            'data' => $user
-        ]);
+        return  new  UserResource($updateUser);
 
     }
 
@@ -108,7 +105,7 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\JsonResponse
+     * @return UserResource |JsonResponse
      */
     public function destroy(User $user)
     {
@@ -122,9 +119,7 @@ class UserController extends Controller
             ], 400);
         }
 
-        return  new  JsonResponse([
-            'data' => 'success'
-        ]);
+        return  new  UserResource($deletedUser);
 
     }
 }
