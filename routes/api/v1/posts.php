@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware([
-//    'auth'
+  //'auth'
 ])
     ->prefix('test')
     ->name('posts.')
