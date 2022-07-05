@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -33,10 +34,20 @@ class PostController extends Controller
     {
         //Post::query()->create($request->toArray());
 
-        $postCreated = Post::query()->create([
-            'title' => $request->title,
-            'body'  => $request->body
-        ]);
+        $postCreated = DB::transaction(function () use ($request){
+
+            $postCreated = Post::query()->create([
+                'title' => $request->title,
+                'body'  => $request->body
+            ]);
+
+            /** Associate with a user into pivot table*/
+            $postCreated->users()->sync($request->user_ids);
+
+            return $postCreated;
+
+        });
+
 
         return  new JsonResponse([
             'data' => $postCreated
@@ -65,10 +76,13 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+
         $updatePost = $post->update([
             'title' => $request->title ?? $post->title,
             'body' => $request->body  ?? $post->body,
         ]);
+
+
 
        if (!$updatePost){
            return  new JsonResponse([
