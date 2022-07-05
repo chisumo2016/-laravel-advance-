@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 use Illuminate\Http\JsonResponse;
 
@@ -13,22 +14,25 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return JsonResponse
+     * @return ResourceCollection
      */
     public function index()
     {
         $comments = Comment::query()->get();
 
-        return  new JsonResponse([
+        return  CommentResource::collection($comments);
+
+
+        /*return  new JsonResponse([
             'data' => $comments
-        ]);
+        ]);*/
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreCommentRequest  $request
-     * @return JsonResponse
+     * @return CommentResource
      */
     public function store(StoreCommentRequest $request)
     {
@@ -37,22 +41,18 @@ class CommentController extends Controller
                 'body'  =>  $request->body
         ]);
 
-        return  new JsonResponse([
-            'data' => $commentCreated
-        ]);
+        return  new CommentResource($commentCreated);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Comment  $comment
-     * @return JsonResponse
+     * @return CommentResource
      */
     public function show(Comment $comment)
     {
-        return  new JsonResponse([
-            'data' => $comment
-        ]);
+        return  new CommentResource($comment);
     }
 
     /**
@@ -60,7 +60,7 @@ class CommentController extends Controller
      *
      * @param  \App\Http\Requests\UpdateCommentRequest  $request
      * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\JsonResponse
+     * @return CommentResource |  JsonResponse
      */
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
@@ -78,16 +78,14 @@ class CommentController extends Controller
             ], 400);
         }
 
-        return  new  JsonResponse([
-            'data' => $comment
-        ]);
+        return  new  CommentResource($updateComment);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function destroy(Comment $comment)
     {
@@ -100,6 +98,8 @@ class CommentController extends Controller
                 ]
             ], 400);
         }
+
+        //return  new  CommentResource($deletedComment);
 
         return  new  JsonResponse([
             'data' => 'success'
