@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Models\Users\UserCreated;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Repositories\UserRepository;
@@ -17,7 +18,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        event(new UserCreated(User::factory()->make()));
         $users = User::query()->get();
+
 
         return  UserResource::collection($users);
 
