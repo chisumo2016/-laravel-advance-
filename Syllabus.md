@@ -1599,12 +1599,15 @@
       NB: WE USE THE SUBRIBER IF WE BUILD LARGE APPLICATION , UNLESS USE EVENT ON SMALL APPLICATION.
 
      USE THE SAME TECHNIQUES ON POST AND COMMENT TO IMPLEMENT  EVENTS
+        EXERCISE:
                 1:  POST
                 2:  COMMENT
 
 
         2:55:46 Ep21 - Sending email
-            Send email innsid event lisitner
+            
+
+
         3:06:29 Ep22 - Unit Test vs Feature Test vs E2E Test
         3:12:29 Ep23 - Unit Testing Essentials
         3:25:44 Ep24 - Testing API routes | Feature Testing
