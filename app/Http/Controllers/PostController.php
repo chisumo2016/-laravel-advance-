@@ -3,6 +3,7 @@ declare(strict_types =1);
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\GeneralJsonException;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
@@ -21,6 +22,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+
+
          $pageSize = $request->page_size ?? 20;
          $posts = Post::query()->paginate($pageSize);
 

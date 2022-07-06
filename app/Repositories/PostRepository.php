@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\GeneralJsonException;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,8 @@ class PostRepository extends  BaseRepository
                    'title' => data_get($attributes,'title', 'Untitled'),
                    'body'  => data_get($attributes,'body')
                ]);
+
+               throw_if(!$postCreated, GeneralJsonException::class,'Failed to create Post');
 
                /** Associate with a user into pivot table*/
 
@@ -40,9 +43,8 @@ class PostRepository extends  BaseRepository
            ]);
 
            /** throw an Exception*/
-           if (!$updatePost){
-               throw new \Exception('failed to update the post record');
-           }
+
+           throw_if(!$updatePost, GeneralJsonException::class,'failed to update the post record');
 
            /** Sync the User Id Relationship U-P*/
            if ($userIds = data_get($attributes, 'user_id')){
@@ -65,10 +67,7 @@ class PostRepository extends  BaseRepository
            $deletedPost = $post->forceDelete();
 
            /** throw an Exception*/
-           if (!$deletedPost){
-               throw new \Exception('cannot delete post');
-           }
-
+           throw_if(!$deletedPost, GeneralJsonException::class,'cannot delete post');
            return $deletedPost;
        });
    }
