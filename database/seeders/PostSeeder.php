@@ -26,7 +26,7 @@ class PostSeeder extends Seeder
 
         $this->truncate('posts');
 
-        $posts = Post::factory(3)->untitled()->create(); //collection
+        $posts = Post::factory(200)->untitled()->create(); //collection
 
         /**Many to Many Post & User*/
         $posts->each(function (Post $post){
