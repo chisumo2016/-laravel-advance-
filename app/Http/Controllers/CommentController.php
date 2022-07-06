@@ -7,6 +7,8 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
+use App\Repositories\CommentRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 
 class CommentController extends Controller
@@ -34,13 +36,13 @@ class CommentController extends Controller
      * @param  \App\Http\Requests\StoreCommentRequest  $request
      * @return CommentResource
      */
-    public function store(StoreCommentRequest $request)
+    public function store(StoreCommentRequest $request, CommentRepository $repository)
     {
-        $commentCreated = Comment::query()->create([
-                //'title' => $request->title,
-                'body'  =>  $request->body
-        ]);
-
+        $commentCreated = $repository->create($request->only([
+            'body',
+            'user_id',
+            'post_id',
+        ]));
         return  new CommentResource($commentCreated);
     }
 
@@ -62,22 +64,13 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return CommentResource |  JsonResponse
      */
-    public function update(UpdateCommentRequest $request, Comment $comment)
+    public function update(UpdateCommentRequest $request, Comment $comment, UserRepository $repository)
     {
-        $updateComment = $comment->update([
-            //'title'       =>  $request->title    ??   $comment->title,
-            'body'        =>  $request->body     ??   $comment->body,
-
-        ]);
-
-        if (!$updateComment){
-            return  new JsonResponse([
-                'errors' => [
-                    'Failed to updated the record model'
-                ]
-            ], 400);
-        }
-
+        $updateComment = $repository->update($comment, $request->only([
+            'body',
+            'user_id',
+            'post_id',
+        ]));
         return  new  CommentResource($updateComment);
     }
 
