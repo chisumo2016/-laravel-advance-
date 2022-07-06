@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events\Models\post;
+namespace App\Events\Models\Post;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;

@@ -2,8 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Events\Models\post\PostCreated;
-use App\Events\Models\post\PostDeleted;
+use App\Events\Models\Post\PostCreated;
+use App\Events\Models\Post\PostDeleted;
+use App\Events\Models\Post\PostUpdated;
 use App\Exceptions\GeneralJsonException;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
@@ -50,7 +51,7 @@ class PostRepository extends  BaseRepository
 
            throw_if(!$updatePost, GeneralJsonException::class,'failed to update the post record');
 
-           event(new PostCreated($post));
+           event(new PostUpdated($post));
 
            /** Sync the User Id Relationship U-P*/
            if ($userIds = data_get($attributes, 'user_id')){
