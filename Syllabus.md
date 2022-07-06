@@ -1048,7 +1048,8 @@
                             update()
                             forceDelete()
                 3: Copy the code from store() method in postController, which accept array $attributes arguments
-                        $postCreated = DB::transaction(function () use ($request){
+                      
+                      $postCreated = DB::transaction(function () use ($request){
                         $postCreated = Post::query()->create([
                             'title' => $request->title,
                             'body'  => $request->body
@@ -1077,7 +1078,8 @@
                                 return $postCreated;
                             });
 
-                                 //Post::query()->create($request->toArray());
+
+                            ///Post::query()->create($request->toArray());
 
                             $postCreated = DB::transaction(function () use ($request){
                     

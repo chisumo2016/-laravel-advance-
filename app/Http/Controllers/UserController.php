@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -41,13 +42,13 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return UserResource | JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request, UserRepository $repository)
     {
-        $UserCreated = User::query()->create([
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'password'  => $request->password
-        ]);
+        $UserCreated = $repository->create($request->only([
+            'name',
+            'email',
+            'password',
+        ]));
 
         return  new  UserResource($UserCreated);
     }
@@ -81,21 +82,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return UserResource | JsonResponse
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user ,UserRepository $repository)
     {
-        $updateUser = $user->update([
-            'name'      =>  $request->name      ?? $user->name,
-            'email'     =>  $request->email     ?? $user->email,
-            'password'  =>  $request->password  ?? $user->password,
-        ]);
-
-        if (!$updateUser){
-            return  new JsonResponse([
-                'errors' => [
-                    'Failed to updated the record model'
-                ]
-            ], 400);
-        }
+        $updateUser = $repository->update($user,$request->only([
+            'name',
+            'email',
+        ]));
 
         return  new  UserResource($updateUser);
 
@@ -107,19 +99,13 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return UserResource |JsonResponse
      */
-    public function destroy(User $user)
+    public function destroy(User $user, UserRepository $repository)
     {
-        $deletedUser = $user->forceDelete();
+        $deletedUser = $repository->forceDelete($user);
 
-        if (!$deletedUser){
-            return  new JsonResponse([
-                'errors' => [
-                    'Could not delete the record'
-                ]
-            ], 400);
-        }
-
-        return  new  UserResource($deletedUser);
+        return new JsonResponse([
+            'data' => 'success',
+        ]);
 
     }
 }
