@@ -2,6 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Events\Models\Comment\CommentCreated;
+use App\Events\Models\Comment\CommentDeleted;
+use App\Events\Models\Comment\CommentUpdated;
 use App\Exceptions\GeneralJsonException;
 use App\Models\Comment;
 
@@ -21,6 +24,8 @@ class CommentRepository extends  BaseRepository
            ]);
 
            throw_if(!$commentCreated, GeneralJsonException::class, 'Failed to create model.');
+
+             event(new CommentCreated($commentCreated));
 
            return $commentCreated;
        });
@@ -47,6 +52,8 @@ class CommentRepository extends  BaseRepository
 
            throw_if(!$updateComment, GeneralJsonException::class, 'Failed to update comment');
 
+            event(new CommentUpdated($comment));
+
            return $comment;
 
        });
@@ -68,6 +75,9 @@ class CommentRepository extends  BaseRepository
                throw new \Exception("cannot delete comment.");
            }*/
            throw_if(!$deletedComment, GeneralJsonException::class, 'cannot delete comment');
+
+
+           event(new CommentDeleted($comment));
 
            return $deletedComment;
        });
