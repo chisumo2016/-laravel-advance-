@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Events\Models\posts\PostCreated;
+use App\Events\Models\posts\PostDeleted;
 use App\Exceptions\GeneralJsonException;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +20,8 @@ class PostRepository extends  BaseRepository
                ]);
 
                throw_if(!$postCreated, GeneralJsonException::class,'Failed to create Post');
+
+                 event(new PostCreated($postCreated));
 
                /** Associate with a user into pivot table*/
 
@@ -46,6 +50,8 @@ class PostRepository extends  BaseRepository
 
            throw_if(!$updatePost, GeneralJsonException::class,'failed to update the post record');
 
+           event(new PostCreated($post));
+
            /** Sync the User Id Relationship U-P*/
            if ($userIds = data_get($attributes, 'user_id')){
                $post->users()->sync($userIds);
@@ -68,6 +74,10 @@ class PostRepository extends  BaseRepository
 
            /** throw an Exception*/
            throw_if(!$deletedPost, GeneralJsonException::class,'cannot delete post');
+
+           event(new PostDeleted($post));
+
+
            return $deletedPost;
        });
    }

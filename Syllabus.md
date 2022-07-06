@@ -1474,6 +1474,7 @@
     
 
         2:47:23 Ep20 - Event & event listener & subscriber
+
           - When the new post has beeenn create  we need to trigger an event
               1: Create a service class
                     we can put all the mailing logic on it and call the servicee class to our controller
@@ -1509,6 +1510,7 @@
                 {
                     $this->user = $user;
                 }
+
         We need to firing up (Dispatch) this our event to the UserRepository 
             In the UserRepository class 
                     create(){
