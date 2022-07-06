@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Events\Models\Users\DeletedCreated;
-use App\Events\Models\Users\UpdatedCreated;
-use App\Events\Models\Users\UserCreated;
+use App\Events\Models\User\DeletedCreated;
+use App\Events\Models\User\UpdatedCreated;
+use App\Events\Models\User\UserCreated;
 use App\Exceptions\GeneralJsonException;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;

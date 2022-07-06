@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Events\Models\Users\UserCreated;
+use App\Events\Models\User\UserCreated;
 use App\Listeners\SendWelcomeEmail;
 use App\Subscriber\Models\UserSubscriber;
 use Illuminate\Auth\Events\Registered;

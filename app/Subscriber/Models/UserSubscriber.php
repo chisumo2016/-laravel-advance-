@@ -2,7 +2,7 @@
 
 namespace App\Subscriber\Models;
 
-use App\Events\Models\Users\UserCreated;
+use App\Events\Models\User\UserCreated;
 use App\Listeners\SendWelcomeEmail;
 use Illuminate\Events\Dispatcher;
 

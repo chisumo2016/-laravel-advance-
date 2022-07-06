@@ -1,17 +1,20 @@
 <?php
 
-namespace App\Events\Models\posts;
+namespace App\Events\Models\post;
 
+use App\Models\Post;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PostDeleted
+class PostCreated
 {
+
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     protected  $post ;
+
     /**
      * Create a new event instance.
      *

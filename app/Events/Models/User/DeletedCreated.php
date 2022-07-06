@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events\Models\Users;
+namespace App\Events\Models\User;
 
 use App\Models\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
