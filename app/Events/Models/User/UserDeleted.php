@@ -8,9 +8,10 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UpdatedCreated
+class UserCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
     protected  $user;
     /**
      * Create a new event instance.
