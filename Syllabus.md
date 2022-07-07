@@ -1604,6 +1604,13 @@
                 2:  COMMENT
 
 
+
+    Event listeners are classes / functions that get exeecuted whenn an event is dispatched
+    We defined our Event - Event Listener mapping in the EVENT SEERVICE PROVIDER
+    Event Subscriber is a class that let us to group our event - listner mappings in one place.
+    We register Subsribers  in the $subscribeer property fron the EVENT SERVICE PROVIDER .
+    
+
         2:55:46 Ep21 - Sending email
             
 
