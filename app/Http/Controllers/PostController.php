@@ -22,8 +22,6 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-
-
          $pageSize = $request->page_size ?? 20;
          $posts = Post::query()->paginate($pageSize);
 
@@ -38,6 +36,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request, PostRepository $repository)
     {
 
+        dd("dome");
         $postCreated = $repository->create($request->only([
             'title',
             'body',
