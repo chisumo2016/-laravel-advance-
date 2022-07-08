@@ -9,9 +9,11 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Repositories\PostRepository;
+use App\Rules\InterArray;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -33,15 +35,37 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return PostResource
      */
-    public function store(StorePostRequest $request, PostRepository $repository)
+    public function store(Request $request, PostRepository $repository)
     {
-
-        dd("dome");
-        $postCreated = $repository->create($request->only([
+        $payLoad = $request->only([
             'title',
             'body',
             'user_ids',
-        ]));
+        ]);
+
+        $validator = Validator::make($payLoad, [
+                'title'     => 'string|required',
+                'body'      => ['string','required'],
+                'user_ids'  => [
+                    'array',
+                    'required',
+                    new InterArray(),
+            ]
+        ],
+
+        [
+            'body.required' => 'Please enter a value for body',
+            'title.string'  => 'Heyy use a string'
+        ],
+        [
+           'user_ids' =>"User IOOO"
+        ]);
+
+
+
+        $validator->validate();
+
+        $postCreated = $repository->create($payLoad);
 
         return  new PostResource($postCreated);
     }
