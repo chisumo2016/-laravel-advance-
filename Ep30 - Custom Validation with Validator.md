@@ -49,3 +49,6 @@
                 dump($validator->passes());
                 dd($validator->getData());
                 dd($validator->attributes());
+    
+      Validator is an alternative way to validate input data otheer using the Request class .
+      Validator has the benefit of proving us alot of helper functions to work with validation.

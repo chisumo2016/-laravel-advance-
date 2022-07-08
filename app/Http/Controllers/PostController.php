@@ -35,37 +35,15 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return PostResource
      */
-    public function store(Request $request, PostRepository $repository)
+    public function store(StorePostRequest $request, PostRepository $repository)
     {
-        $payLoad = $request->only([
+        $postCreated = $repository->create($request->only([
             'title',
             'body',
             'user_ids',
-        ]);
+        ]));
 
-        $validator = Validator::make($payLoad, [
-                'title'     => 'string|required',
-                'body'      => ['string','required'],
-                'user_ids'  => [
-                    'array',
-                    'required',
-                    new InterArray(),
-            ]
-        ],
-
-        [
-            'body.required' => 'Please enter a value for body',
-            'title.string'  => 'Heyy use a string'
-        ],
-        [
-           'user_ids' =>"User IOOO"
-        ]);
-
-
-
-        $validator->validate();
-
-        $postCreated = $repository->create($payLoad);
+        $postCreated = $repository->create($postCreated);
 
         return  new PostResource($postCreated);
     }
