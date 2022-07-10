@@ -1624,6 +1624,11 @@
         3:58:31 Ep28 - Opinion on Testing: how much is enough?
         4:03:48 Ep29 - Validating Request
         4:13:53 Ep30 - Custom Validation with Validator
+     
+           https://www.youtube.com/watch?v=_zNi37BJVBk
+            https://acadea.io/learn 
+            https://www.networldsports.co.uk/aquatec-pool-ground-sheet.html
+
         4:21:32 Ep31 - Laravel IDE helper
         4:25:19 Ep32 - Config and Env Var
         4:29:49 Ep33 - Documenting API with API Generator
