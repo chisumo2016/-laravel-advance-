@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Events\Models\User\UserCreated;
 use App\Events\Models\User\userUpdated;
-use App\Events\Models\User\UserCreated;
+
 use App\Exceptions\GeneralJsonException;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;

@@ -1628,6 +1628,35 @@
            https://www.youtube.com/watch?v=_zNi37BJVBk
             https://acadea.io/learn 
             https://www.networldsports.co.uk/aquatec-pool-ground-sheet.html
+            php interview practice by azdanov
+                General Employmet History
+                Skill
+                What have built ? Example ideal and great
+                Good Techical Understading for your stuck you're working with
+                        Example if you're working as Laravel Developer
+                             You have good understanding of request cycle
+                             You have good understanding of service container
+                             You have good understanding of IOC principles
+                             You have good understanding of dependecy injection
+                             You have good understanding of elequent ORM 
+                             You have good understanding of  laravel perfomance improment you can make to ana apps.
+               Things like SOLID and DRY principle.
+               Controverse Alert.
+                Build the project annd show things you will usinng in the job
+                Experince with other language is very cool.
+                Show tools you have worked with.
+                Eager to learn soemething new on my spare time.
+                  1161sqm 
+                    34350 pavic
+                    380 cement  x  15000   5,700 000
+                    15 Lori  x 150, 000    2 250  000
+
+                  110 x 1 mfuko 
+                    380 x 10, 
+                50 000 x 2 
+                 
+                    
+
 
         4:21:32 Ep31 - Laravel IDE helper
         4:25:19 Ep32 - Config and Env Var

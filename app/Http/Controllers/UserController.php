@@ -8,19 +8,32 @@ use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
+/**
+ * @group  User Management
+ *
+ * APIs to manage the user resource.
+ */
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of users.
      *
-     * @return ResourceCollection
+     * Gets a list of users.
+     *
+     * @queryParam page_size int Size per page. Defaults to 20. Example: 20
+     * @queryParam page int Page to view. Example: 1
+     *
+     * @apiResourceCollection App\Http\Resources\UserResource
+     *@apiResourceModel App\Models\User
+     * @return  ResourceCollection
      */
     public function index()
     {
-        event(new UserCreated(User::factory()->make()));
-        $users = User::query()->get();
-
+        //event(new UserCreated(User::factory()->make()));
+        //$users = User::query()->get();
+        $users = User::query()->paginate($request->page_size ?? 20);
 
         return  UserResource::collection($users);
 
@@ -40,17 +53,20 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return UserResource | JsonResponse
+     * @bodyParam name string required Name of the user. Example: John Doe
+     * @bodyParam email string required Email of the user. Example: doe@doe.com
+     * @apiResource App\Http\Resources\UserResource
+     * @apiResourceModel App\Models\User
+
+     * @param \Illuminate\Http\Request $request
+     * @param UserRepository $repository
+     * @return UserResource
      */
     public function store(Request $request, UserRepository $repository)
     {
         $UserCreated = $repository->create($request->only([
             'name',
             'email',
-            'password',
         ]));
 
         return  new  UserResource($UserCreated);
@@ -58,6 +74,10 @@ class UserController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @urlParam id int required User ID
+     * @apiResource  App\Http\Resources\UserResource
+     * @apiResourceModel  App\Models\User
      *
      * @param  \App\Models\User  $user
      * @return UserResource| JsonResponse
@@ -81,6 +101,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @bodyParam name string required Name of the user. Example: John Doe
+     * @bodyParam email string required Email of the user. Example: doe@doe.com
+     * @apiResource App\Http\Resources\UserResource
+     * @apiResourceModel App\Models\User
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\User  $user
      * @return UserResource | JsonResponse
@@ -98,9 +123,11 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     *   @response 200 {
+            "data": "success"
+     * }
      * @param  \App\Models\User  $user
-     * @return UserResource |JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(User $user, UserRepository $repository)
     {
