@@ -6,6 +6,7 @@ use App\Events\Models\Post\PostCreated;
 use App\Events\Models\Post\PostDeleted;
 use App\Events\Models\Post\PostUpdated;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -14,6 +15,14 @@ use Tests\TestCase;
 class PostApiTest extends TestCase
 {
        use RefreshDatabase;
+    public function  setUp(): void
+    {
+        parent::setUp();
+        /** creating a dummy user and pass*/
+        $user = User::factory()->create();
+        $this->actingAs($user);
+    }
+
 
     public function test_index()
     {
@@ -51,7 +60,10 @@ class PostApiTest extends TestCase
         Event::fake();
         $dummyPost = Post::factory()->make();
 
-        $response = $this->json('post','/api/v1/test/posts', $dummyPost->toArray());
+        $dummyUser = User::factory()->create();
+
+        $response = $this->json('post','/api/v1/test/posts', array_merge($dummyPost->toArray(), ['user_ids' =>[$dummyUser->id]]));
+        //$response = $this->json('post','/api/v1/test/posts', $dummyPost->toArray());
 
         $result = $response->assertStatus(201)->json('data');
 

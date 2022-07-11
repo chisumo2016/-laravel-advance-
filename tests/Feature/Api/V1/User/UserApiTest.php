@@ -18,8 +18,18 @@ class UserApiTest extends TestCase
 
     protected $uri = '/api/v1/test/test/users';
 
+    public function  setUp(): void
+    {
+        parent::setUp();
+
+        //creating a dummy user and pass
+        $user = User::factory()->create();
+        $this->actingAs($user);
+    }
+
     public function test_index()
     {
+
 
         // load data in db
         $users = User::factory(10)->create();

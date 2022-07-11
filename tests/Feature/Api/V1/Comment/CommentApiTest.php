@@ -17,6 +17,14 @@ class CommentApiTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function  setUp(): void
+    {
+        parent::setUp();
+        /** creating a dummy user and pass*/
+        $user = User::factory()->create();
+        $this->actingAs($user);
+    }
+
     protected $uri = '/api/v1/test/comments';
 
 

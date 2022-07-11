@@ -1,4 +1,4 @@
-### Laravel Sanctum
+### ### Laravel Sanctum
      Web: https://laravel.com/docs/9.x/sanctum
     [X] fotify isn't enough .Doesnt provide these below feeatures out of the box .
     [X] They use token or cookies
