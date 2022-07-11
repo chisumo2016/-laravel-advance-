@@ -11,6 +11,7 @@
         [x] implement the interface class 
                 implements MMustVerifyEmail
         [X] Test via Postman
+        [X] vendor/laravel/fortify/routes/routes.php
 
         Fortify provides us a handy eemail verificatioon feature to confirm the user's email address.
         We can use the 'verify' middleware to protect our app routes.
