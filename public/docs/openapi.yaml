@@ -208,557 +208,6 @@ paths:
         required: true
         schema:
           type: integer
-  /api/v1/test/posts:
-    get:
-      summary: 'Display a listing of the resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    -
-                      id: 1
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 2
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 3
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 4
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 5
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 6
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 7
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 8
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 9
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 10
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 11
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 12
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 13
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 14
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 15
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 16
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 17
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 18
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 19
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                    -
-                      id: 20
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-                  links:
-                    first: 'http://laravel-advance.test/api/v1/test/posts?page=1'
-                    last: 'http://laravel-advance.test/api/v1/test/posts?page=10'
-                    prev: null
-                    next: 'http://laravel-advance.test/api/v1/test/posts?page=2'
-                  meta:
-                    current_page: 1
-                    from: 1
-                    last_page: 10
-                    links:
-                      -
-                        url: null
-                        label: '&laquo; Previous'
-                        active: false
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=1'
-                        label: '1'
-                        active: true
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=2'
-                        label: '2'
-                        active: false
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=3'
-                        label: '3'
-                        active: false
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=4'
-                        label: '4'
-                        active: false
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=5'
-                        label: '5'
-                        active: false
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=6'
-                        label: '6'
-                        active: false
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=7'
-                        label: '7'
-                        active: false
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=8'
-                        label: '8'
-                        active: false
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=9'
-                        label: '9'
-                        active: false
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=10'
-                        label: '10'
-                        active: false
-                      -
-                        url: 'http://laravel-advance.test/api/v1/test/posts?page=2'
-                        label: 'Next &raquo;'
-                        active: false
-                    path: 'http://laravel-advance.test/api/v1/test/posts'
-                    per_page: 20
-                    to: 20
-                    total: 200
-                properties:
-                  data:
-                    type: array
-                    example:
-                      -
-                        id: 1
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 2
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 3
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 4
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 5
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 6
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 7
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 8
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 9
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 10
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 11
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 12
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 13
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 14
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 15
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 16
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 17
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 18
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 19
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                      -
-                        id: 20
-                        title: untitled
-                        body: []
-                        created_at: '2022-07-10T18:03:46.000000Z'
-                        updated_at: '2022-07-10T18:03:46.000000Z'
-                    items:
-                      type: object
-                  links:
-                    type: object
-                    example:
-                      first: 'http://laravel-advance.test/api/v1/test/posts?page=1'
-                      last: 'http://laravel-advance.test/api/v1/test/posts?page=10'
-                      prev: null
-                      next: 'http://laravel-advance.test/api/v1/test/posts?page=2'
-                  meta:
-                    type: object
-                    example:
-                      current_page: 1
-                      from: 1
-                      last_page: 10
-                      links:
-                        -
-                          url: null
-                          label: '&laquo; Previous'
-                          active: false
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=1'
-                          label: '1'
-                          active: true
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=2'
-                          label: '2'
-                          active: false
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=3'
-                          label: '3'
-                          active: false
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=4'
-                          label: '4'
-                          active: false
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=5'
-                          label: '5'
-                          active: false
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=6'
-                          label: '6'
-                          active: false
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=7'
-                          label: '7'
-                          active: false
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=8'
-                          label: '8'
-                          active: false
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=9'
-                          label: '9'
-                          active: false
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=10'
-                          label: '10'
-                          active: false
-                        -
-                          url: 'http://laravel-advance.test/api/v1/test/posts?page=2'
-                          label: 'Next &raquo;'
-                          active: false
-                      path: 'http://laravel-advance.test/api/v1/test/posts'
-                      per_page: 20
-                      to: 20
-                      total: 200
-      tags:
-        - Endpoints
-      security: []
-    post:
-      summary: 'Store a newly created resource in storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                  description: ''
-                  example: ratione
-                body:
-                  type: string
-                  description: ''
-                  example: praesentium
-                user_ids:
-                  type: array
-                  description: ''
-                  example:
-                    - ab
-                  items:
-                    type: string
-              required:
-                - title
-                - body
-                - user_ids
-      security: []
-  '/api/v1/test/posts/{id}':
-    get:
-      summary: 'Display the specified resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    id: 1
-                    title: untitled
-                    body: []
-                    created_at: '2022-07-10T18:03:46.000000Z'
-                    updated_at: '2022-07-10T18:03:46.000000Z'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      id: 1
-                      title: untitled
-                      body: []
-                      created_at: '2022-07-10T18:03:46.000000Z'
-                      updated_at: '2022-07-10T18:03:46.000000Z'
-      tags:
-        - Endpoints
-      security: []
-    patch:
-      summary: 'Update the specified resource in storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-      security: []
-    delete:
-      summary: 'Remove the specified resource from storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-      security: []
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the post.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   /api/user:
     get:
       summary: ''
@@ -794,6 +243,323 @@ paths:
       tags:
         - Endpoints
       security: []
+  /api/v1/test/posts:
+    get:
+      summary: 'Display a listing of the posts.'
+      description: 'Gets a list of posts.'
+      parameters:
+        -
+          in: query
+          name: page_size
+          description: 'Size per page. Defaults to 20.'
+          example: 20
+          required: false
+          schema:
+            type: integer
+            description: 'Size per page. Defaults to 20.'
+            example: 20
+        -
+          in: query
+          name: page
+          description: 'Page to view.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'Page to view.'
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 210
+                      title: dolor
+                      body: []
+                      created_at: '2022-07-11T08:26:22.000000Z'
+                      updated_at: '2022-07-11T08:26:22.000000Z'
+                    -
+                      id: 211
+                      title: porro
+                      body: []
+                      created_at: '2022-07-11T08:26:22.000000Z'
+                      updated_at: '2022-07-11T08:26:22.000000Z'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 210
+                        title: dolor
+                        body: []
+                        created_at: '2022-07-11T08:26:22.000000Z'
+                        updated_at: '2022-07-11T08:26:22.000000Z'
+                      -
+                        id: 211
+                        title: porro
+                        body: []
+                        created_at: '2022-07-11T08:26:22.000000Z'
+                        updated_at: '2022-07-11T08:26:22.000000Z'
+                    items:
+                      type: object
+      tags:
+        - 'Post Management'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 213
+                    title: exercitationem
+                    body: []
+                    created_at: '2022-07-11T08:26:22.000000Z'
+                    updated_at: '2022-07-11T08:26:22.000000Z'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 213
+                      title: exercitationem
+                      body: []
+                      created_at: '2022-07-11T08:26:22.000000Z'
+                      updated_at: '2022-07-11T08:26:22.000000Z'
+      tags:
+        - 'Post Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Title of the post.'
+                  example: 'Tourism Post'
+                body:
+                  type: array
+                  description: 'Body of the post.'
+                  example:
+                    - 'This post is  for tourism'
+                  items:
+                    type: string
+                user_ids:
+                  type: array
+                  description: 'The author ids of the post.'
+                  example:
+                    - 1
+                    - 2
+                  items:
+                    type: integer
+              required:
+                - title
+                - body
+                - user_ids
+      security: []
+  '/api/v1/test/posts/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 212
+                    title: aut
+                    body: []
+                    created_at: '2022-07-11T08:26:22.000000Z'
+                    updated_at: '2022-07-11T08:26:22.000000Z'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 212
+                      title: aut
+                      body: []
+                      created_at: '2022-07-11T08:26:22.000000Z'
+                      updated_at: '2022-07-11T08:26:22.000000Z'
+      tags:
+        - 'Post Management'
+      security: []
+    patch:
+      summary: 'Update the specified post in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 214
+                    title: rerum
+                    body: []
+                    created_at: '2022-07-11T08:26:22.000000Z'
+                    updated_at: '2022-07-11T08:26:22.000000Z'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 214
+                      title: rerum
+                      body: []
+                      created_at: '2022-07-11T08:26:22.000000Z'
+                      updated_at: '2022-07-11T08:26:22.000000Z'
+      tags:
+        - 'Post Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Title of the post.'
+                  example: 'Amazing Post'
+                body:
+                  type: array
+                  description: 'Body of the post.'
+                  example:
+                    - 'This post is super beautiful'
+                  items:
+                    type: string
+                user_ids:
+                  type: array
+                  description: 'The author ids of the post.'
+                  example:
+                    - 1
+                    - 2
+                  items:
+                    type: integer
+              required:
+                - title
+                - body
+                - user_ids
+      security: []
+    delete:
+      summary: 'Remove the specified post from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: success
+                properties:
+                  data:
+                    type: string
+                    example: success
+      tags:
+        - 'Post Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the post.'
+        example: 1
+        required: true
+        schema:
+          type: integer
   /api/v1/test/users:
     get:
       summary: 'Display a listing of users.'
@@ -843,33 +609,33 @@ paths:
                 example:
                   data:
                     -
-                      name: 'Dr. Jovanny Welch'
-                      email: juston63@example.org
+                      name: 'Flossie Romaguera'
+                      email: hilario31@example.com
                       password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                      created_at: '2022-07-11T08:00:05.000000Z'
-                      updated_at: '2022-07-11T08:00:05.000000Z'
+                      created_at: '2022-07-11T08:26:21.000000Z'
+                      updated_at: '2022-07-11T08:26:21.000000Z'
                     -
-                      name: 'Sincere Hudson'
-                      email: becker.aryanna@example.com
+                      name: 'Queenie Kshlerin'
+                      email: rylan.schinner@example.org
                       password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                      created_at: '2022-07-11T08:00:05.000000Z'
-                      updated_at: '2022-07-11T08:00:05.000000Z'
+                      created_at: '2022-07-11T08:26:21.000000Z'
+                      updated_at: '2022-07-11T08:26:21.000000Z'
                 properties:
                   data:
                     type: array
                     example:
                       -
-                        name: 'Dr. Jovanny Welch'
-                        email: juston63@example.org
+                        name: 'Flossie Romaguera'
+                        email: hilario31@example.com
                         password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                        created_at: '2022-07-11T08:00:05.000000Z'
-                        updated_at: '2022-07-11T08:00:05.000000Z'
+                        created_at: '2022-07-11T08:26:21.000000Z'
+                        updated_at: '2022-07-11T08:26:21.000000Z'
                       -
-                        name: 'Sincere Hudson'
-                        email: becker.aryanna@example.com
+                        name: 'Queenie Kshlerin'
+                        email: rylan.schinner@example.org
                         password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                        created_at: '2022-07-11T08:00:05.000000Z'
-                        updated_at: '2022-07-11T08:00:05.000000Z'
+                        created_at: '2022-07-11T08:26:21.000000Z'
+                        updated_at: '2022-07-11T08:26:21.000000Z'
                     items:
                       type: object
       tags:
@@ -902,20 +668,20 @@ paths:
                 type: object
                 example:
                   data:
-                    name: 'Cale Donnelly'
-                    email: kkeeling@example.com
+                    name: 'Cornelius Schumm'
+                    email: boyer.burdette@example.org
                     password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                    created_at: '2022-07-11T08:00:06.000000Z'
-                    updated_at: '2022-07-11T08:00:06.000000Z'
+                    created_at: '2022-07-11T08:26:21.000000Z'
+                    updated_at: '2022-07-11T08:26:21.000000Z'
                 properties:
                   data:
                     type: object
                     example:
-                      name: 'Cale Donnelly'
-                      email: kkeeling@example.com
+                      name: 'Cornelius Schumm'
+                      email: boyer.burdette@example.org
                       password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                      created_at: '2022-07-11T08:00:06.000000Z'
-                      updated_at: '2022-07-11T08:00:06.000000Z'
+                      created_at: '2022-07-11T08:26:21.000000Z'
+                      updated_at: '2022-07-11T08:26:21.000000Z'
       tags:
         - 'User Management'
       requestBody:
@@ -965,20 +731,20 @@ paths:
                 type: object
                 example:
                   data:
-                    name: 'Mae Conroy'
-                    email: gayle31@example.net
+                    name: 'Mrs. Nakia Bednar III'
+                    email: schuppe.franz@example.org
                     password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                    created_at: '2022-07-11T08:00:06.000000Z'
-                    updated_at: '2022-07-11T08:00:06.000000Z'
+                    created_at: '2022-07-11T08:26:21.000000Z'
+                    updated_at: '2022-07-11T08:26:21.000000Z'
                 properties:
                   data:
                     type: object
                     example:
-                      name: 'Mae Conroy'
-                      email: gayle31@example.net
+                      name: 'Mrs. Nakia Bednar III'
+                      email: schuppe.franz@example.org
                       password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                      created_at: '2022-07-11T08:00:06.000000Z'
-                      updated_at: '2022-07-11T08:00:06.000000Z'
+                      created_at: '2022-07-11T08:26:21.000000Z'
+                      updated_at: '2022-07-11T08:26:21.000000Z'
       tags:
         - 'User Management'
       security: []
@@ -1009,20 +775,20 @@ paths:
                 type: object
                 example:
                   data:
-                    name: 'Ms. Bernadine McLaughlin IV'
-                    email: braxton.pollich@example.org
+                    name: 'Lamar Harvey'
+                    email: christian.sanford@example.org
                     password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                    created_at: '2022-07-11T08:00:06.000000Z'
-                    updated_at: '2022-07-11T08:00:06.000000Z'
+                    created_at: '2022-07-11T08:26:22.000000Z'
+                    updated_at: '2022-07-11T08:26:22.000000Z'
                 properties:
                   data:
                     type: object
                     example:
-                      name: 'Ms. Bernadine McLaughlin IV'
-                      email: braxton.pollich@example.org
+                      name: 'Lamar Harvey'
+                      email: christian.sanford@example.org
                       password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                      created_at: '2022-07-11T08:00:06.000000Z'
-                      updated_at: '2022-07-11T08:00:06.000000Z'
+                      created_at: '2022-07-11T08:26:22.000000Z'
+                      updated_at: '2022-07-11T08:26:22.000000Z'
       tags:
         - 'User Management'
       requestBody:
@@ -1071,7 +837,7 @@ paths:
         in: path
         name: id
         description: 'User ID'
-        example: 20
+        example: 6
         required: true
         schema:
           type: integer
@@ -1079,6 +845,9 @@ tags:
   -
     name: Endpoints
     description: ''
+  -
+    name: 'Post Management'
+    description: "\nAPIs to manage the post resource."
   -
     name: 'User Management'
     description: "\nAPIs to manage the user resource."

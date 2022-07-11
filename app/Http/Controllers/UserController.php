@@ -26,7 +26,7 @@ class UserController extends Controller
      * @queryParam page int Page to view. Example: 1
      *
      * @apiResourceCollection App\Http\Resources\UserResource
-     *@apiResourceModel App\Models\User
+     * @apiResourceModel App\Models\User
      * @return  ResourceCollection
      */
     public function index()
