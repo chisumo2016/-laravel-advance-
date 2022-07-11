@@ -88,10 +88,10 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::verifyEmailView(function (){
             return view('auth.verify');
         });
-        Fortify::loginView(fn () => view('some.view.in.your.app'));
+        /*Fortify::loginView(fn () => view('some.view.in.your.app'));
         Fortify::registerView(fn () => view('some.view.in.your.app'));
         Fortify::twoFactorChallengeView(fn () => view('some.view.in.your.app'));
         Fortify::requestPasswordResetLinkView(fn () => view('some.view.in.your.app'));
-        Fortify::resetPasswordView(fn () => view('some.view.in.your.app'));
+        Fortify::resetPasswordView(fn () => view('some.view.in.your.app'));*/
     }
 }
