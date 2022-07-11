@@ -70,31 +70,38 @@
                                                 </ul>
                     
                     <ul id="tocify-header-2" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
+                <li class="tocify-item level-1" data-unique="comment-management">
+                    <a href="#comment-management">Comment Management</a>
                 </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-test-comments">
-                        <a href="#endpoints-GETapi-v1-test-comments">Display a listing of the resource.</a>
+                                    <ul id="tocify-subheader-comment-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="comment-management-GETapi-v1-test-comments">
+                        <a href="#comment-management-GETapi-v1-test-comments">Display a listing of comments.</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-test-comments--id-">
-                        <a href="#endpoints-GETapi-v1-test-comments--id-">Display the specified resource.</a>
+                                    <li class="tocify-item level-2" data-unique="comment-management-GETapi-v1-test-comments--id-">
+                        <a href="#comment-management-GETapi-v1-test-comments--id-">Display the specified comment.</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-test-comments">
-                        <a href="#endpoints-POSTapi-v1-test-comments">Store a newly created resource in storage.</a>
+                                    <li class="tocify-item level-2" data-unique="comment-management-POSTapi-v1-test-comments">
+                        <a href="#comment-management-POSTapi-v1-test-comments">Store a newly created comment in storage.</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-PATCHapi-v1-test-comments--id-">
-                        <a href="#endpoints-PATCHapi-v1-test-comments--id-">Update the specified resource in storage.</a>
+                                    <li class="tocify-item level-2" data-unique="comment-management-PATCHapi-v1-test-comments--id-">
+                        <a href="#comment-management-PATCHapi-v1-test-comments--id-">Update the specified comment in storage.</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-v1-test-comments--id-">
-                        <a href="#endpoints-DELETEapi-v1-test-comments--id-">Remove the specified resource from storage.</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
-                        <a href="#endpoints-GETapi-user">GET api/user</a>
+                                    <li class="tocify-item level-2" data-unique="comment-management-DELETEapi-v1-test-comments--id-">
+                        <a href="#comment-management-DELETEapi-v1-test-comments--id-">Remove the specified comment from storage.</a>
                     </li>
                                                     </ul>
                             </ul>
                     <ul id="tocify-header-3" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
+                        <a href="#endpoints-GETapi-user">GET api/user</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-4" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="post-management">
                     <a href="#post-management">Post Management</a>
                 </li>
@@ -116,7 +123,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-4" class="tocify-header">
+                    <ul id="tocify-header-5" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="user-management">
                     <a href="#user-management">User Management</a>
                 </li>
@@ -167,16 +174,16 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="endpoints">Endpoints</h1>
+        <h1 id="comment-management">Comment Management</h1>
 
-    
+    <p>APIs to manage comments</p>
 
-            <h2 id="endpoints-GETapi-v1-test-comments">Display a listing of the resource.</h2>
+            <h2 id="comment-management-GETapi-v1-test-comments">Display a listing of comments.</h2>
 
 <p>
 </p>
 
-
+<p>Gets a list of comments.</p>
 
 <span id="example-requests-GETapi-v1-test-comments">
 <blockquote>Example request:</blockquote>
@@ -184,7 +191,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://laravel-advance.test/api/v1/test/comments" \
+    --get "http://laravel-advance.test/api/v1/test/comments?page_size=20&amp;page=1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -193,6 +200,13 @@ You can switch the language used with the tabs at the top right (or from the nav
     <pre><code class="language-javascript">const url = new URL(
     "http://laravel-advance.test/api/v1/test/comments"
 );
+
+const params = {
+    "page_size": "20",
+    "page": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Content-Type": "application/json",
@@ -210,43 +224,23 @@ fetch(url, {
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
-access-control-allow-origin: *
- </code></pre>
-        </details>         <pre>
+                <pre>
 
 <code class="language-json">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 1,
+            &quot;id&quot;: 4,
+            &quot;title&quot;: null,
             &quot;body&quot;: [],
-            &quot;user_id&quot;: 4,
-            &quot;post_id&quot;: 93,
-            &quot;created_at&quot;: &quot;2022-07-10 18:03:47&quot;,
-            &quot;updated_at&quot;: &quot;2022-07-10 18:03:47&quot;
+            &quot;created_at&quot;: &quot;2022-07-11T08:33:47.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-07-11T08:33:47.000000Z&quot;
         },
         {
-            &quot;id&quot;: 2,
+            &quot;id&quot;: 5,
+            &quot;title&quot;: null,
             &quot;body&quot;: [],
-            &quot;user_id&quot;: 3,
-            &quot;post_id&quot;: 197,
-            &quot;created_at&quot;: &quot;2022-07-10 18:03:47&quot;,
-            &quot;updated_at&quot;: &quot;2022-07-10 18:03:47&quot;
-        },
-        {
-            &quot;id&quot;: 3,
-            &quot;body&quot;: [],
-            &quot;user_id&quot;: 1,
-            &quot;post_id&quot;: 122,
-            &quot;created_at&quot;: &quot;2022-07-10 18:03:47&quot;,
-            &quot;updated_at&quot;: &quot;2022-07-10 18:03:47&quot;
+            &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
         }
     ]
 }</code>
@@ -291,9 +285,30 @@ access-control-allow-origin: *
             <small class="badge badge-green">GET</small>
             <b><code>api/v1/test/comments</code></b>
         </p>
-                    </form>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>page_size</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page_size"
+               data-endpoint="GETapi-v1-test-comments"
+               value="20"
+               data-component="query" hidden>
+    <br>
+<p>Size per page. Defaults to 20.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-v1-test-comments"
+               value="1"
+               data-component="query" hidden>
+    <br>
+<p>Page to view.</p>
+            </p>
+                </form>
 
-            <h2 id="endpoints-GETapi-v1-test-comments--id-">Display the specified resource.</h2>
+            <h2 id="comment-management-GETapi-v1-test-comments--id-">Display the specified comment.</h2>
 
 <p>
 </p>
@@ -332,26 +347,16 @@ fetch(url, {
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
-access-control-allow-origin: *
- </code></pre>
-        </details>         <pre>
+                <pre>
 
 <code class="language-json">{
     &quot;data&quot;: {
-        &quot;id&quot;: 1,
+        &quot;id&quot;: 6,
         &quot;body&quot;: [],
-        &quot;user_id&quot;: 4,
-        &quot;post_id&quot;: 93,
-        &quot;created_at&quot;: &quot;2022-07-10 18:03:47&quot;,
-        &quot;updated_at&quot;: &quot;2022-07-10 18:03:47&quot;
+        &quot;user_id&quot;: 1,
+        &quot;post_id&quot;: 185,
+        &quot;created_at&quot;: &quot;2022-07-11 08:33:48&quot;,
+        &quot;updated_at&quot;: &quot;2022-07-11 08:33:48&quot;
     }
 }</code>
  </pre>
@@ -408,7 +413,7 @@ access-control-allow-origin: *
             </p>
                     </form>
 
-            <h2 id="endpoints-POSTapi-v1-test-comments">Store a newly created resource in storage.</h2>
+            <h2 id="comment-management-POSTapi-v1-test-comments">Store a newly created comment in storage.</h2>
 
 <p>
 </p>
@@ -423,7 +428,15 @@ access-control-allow-origin: *
     <pre><code class="language-bash">curl --request POST \
     "http://laravel-advance.test/api/v1/test/comments" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json" \
+    --data "{
+    \"body\": [
+        \"This comment is super beautiful\"
+    ],
+    \"user_id\": 1,
+    \"post_id\": 1
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
@@ -436,15 +449,40 @@ const headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "body": [
+        "This comment is super beautiful"
+    ],
+    "user_id": 1,
+    "post_id": 1
+};
+
 fetch(url, {
     method: "POST",
     headers,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
 <span id="example-responses-POSTapi-v1-test-comments">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 7,
+        &quot;body&quot;: [],
+        &quot;user_id&quot;: 7,
+        &quot;post_id&quot;: 82,
+        &quot;created_at&quot;: &quot;2022-07-11 08:33:48&quot;,
+        &quot;updated_at&quot;: &quot;2022-07-11 08:33:48&quot;
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-v1-test-comments" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-v1-test-comments"></span>:
@@ -484,9 +522,43 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/v1/test/comments</code></b>
         </p>
-                    </form>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>body</code></b>&nbsp;&nbsp;<small>string[]</small>  &nbsp;
+                <input type="text"
+               name="body[0]"
+               data-endpoint="POSTapi-v1-test-comments"
+               data-component="body" hidden>
+        <input type="text"
+               name="body[1]"
+               data-endpoint="POSTapi-v1-test-comments"
+               data-component="body" hidden>
+    <br>
+<p>Body of the comment.</p>
+        </p>
+                <p>
+            <b><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="user_id"
+               data-endpoint="POSTapi-v1-test-comments"
+               value="1"
+               data-component="body" hidden>
+    <br>
+<p>The author id of the comment.</p>
+        </p>
+                <p>
+            <b><code>post_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="post_id"
+               data-endpoint="POSTapi-v1-test-comments"
+               value="1"
+               data-component="body" hidden>
+    <br>
+<p>The post id that the comment belongs to.</p>
+        </p>
+        </form>
 
-            <h2 id="endpoints-PATCHapi-v1-test-comments--id-">Update the specified resource in storage.</h2>
+            <h2 id="comment-management-PATCHapi-v1-test-comments--id-">Update the specified comment in storage.</h2>
 
 <p>
 </p>
@@ -501,7 +573,15 @@ fetch(url, {
     <pre><code class="language-bash">curl --request PATCH \
     "http://laravel-advance.test/api/v1/test/comments/1" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json" \
+    --data "{
+    \"body\": [
+        \"This comment is super beautiful\"
+    ],
+    \"user_id\": 1,
+    \"post_id\": 1
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
@@ -514,15 +594,40 @@ const headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "body": [
+        "This comment is super beautiful"
+    ],
+    "user_id": 1,
+    "post_id": 1
+};
+
 fetch(url, {
     method: "PATCH",
     headers,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
 <span id="example-responses-PATCHapi-v1-test-comments--id-">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 8,
+        &quot;body&quot;: [],
+        &quot;user_id&quot;: 6,
+        &quot;post_id&quot;: 132,
+        &quot;created_at&quot;: &quot;2022-07-11 08:33:48&quot;,
+        &quot;updated_at&quot;: &quot;2022-07-11 08:33:48&quot;
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-PATCHapi-v1-test-comments--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PATCHapi-v1-test-comments--id-"></span>:
@@ -573,9 +678,43 @@ fetch(url, {
     <br>
 <p>The ID of the comment.</p>
             </p>
-                    </form>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>body</code></b>&nbsp;&nbsp;<small>string[]</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="body[0]"
+               data-endpoint="PATCHapi-v1-test-comments--id-"
+               data-component="body" hidden>
+        <input type="text"
+               name="body[1]"
+               data-endpoint="PATCHapi-v1-test-comments--id-"
+               data-component="body" hidden>
+    <br>
+<p>Body of the comment.</p>
+        </p>
+                <p>
+            <b><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="user_id"
+               data-endpoint="PATCHapi-v1-test-comments--id-"
+               value="1"
+               data-component="body" hidden>
+    <br>
+<p>The author id of the comment.</p>
+        </p>
+                <p>
+            <b><code>post_id</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="post_id"
+               data-endpoint="PATCHapi-v1-test-comments--id-"
+               value="1"
+               data-component="body" hidden>
+    <br>
+<p>The post id that the comment belongs to.</p>
+        </p>
+        </form>
 
-            <h2 id="endpoints-DELETEapi-v1-test-comments--id-">Remove the specified resource from storage.</h2>
+            <h2 id="comment-management-DELETEapi-v1-test-comments--id-">Remove the specified comment from storage.</h2>
 
 <p>
 </p>
@@ -611,7 +750,16 @@ fetch(url, {
 </span>
 
 <span id="example-responses-DELETEapi-v1-test-comments--id-">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: &quot;success&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-DELETEapi-v1-test-comments--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-DELETEapi-v1-test-comments--id-"></span>:
@@ -663,6 +811,10 @@ fetch(url, {
 <p>The ID of the comment.</p>
             </p>
                     </form>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
 
             <h2 id="endpoints-GETapi-user">GET api/user</h2>
 
@@ -814,18 +966,18 @@ fetch(url, {
 <code class="language-json">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 210,
-            &quot;title&quot;: &quot;dolor&quot;,
+            &quot;id&quot;: 215,
+            &quot;title&quot;: &quot;omnis&quot;,
             &quot;body&quot;: [],
-            &quot;created_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;
+            &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
         },
         {
-            &quot;id&quot;: 211,
-            &quot;title&quot;: &quot;porro&quot;,
+            &quot;id&quot;: 216,
+            &quot;title&quot;: &quot;tempore&quot;,
             &quot;body&quot;: [],
-            &quot;created_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;
+            &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
         }
     ]
 }</code>
@@ -936,11 +1088,11 @@ fetch(url, {
 
 <code class="language-json">{
     &quot;data&quot;: {
-        &quot;id&quot;: 212,
-        &quot;title&quot;: &quot;aut&quot;,
+        &quot;id&quot;: 217,
+        &quot;title&quot;: &quot;incidunt&quot;,
         &quot;body&quot;: [],
-        &quot;created_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;
+        &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
     }
 }</code>
  </pre>
@@ -1063,11 +1215,11 @@ fetch(url, {
 
 <code class="language-json">{
     &quot;data&quot;: {
-        &quot;id&quot;: 213,
-        &quot;title&quot;: &quot;exercitationem&quot;,
+        &quot;id&quot;: 218,
+        &quot;title&quot;: &quot;et&quot;,
         &quot;body&quot;: [],
-        &quot;created_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;
+        &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
     }
 }</code>
  </pre>
@@ -1216,11 +1368,11 @@ fetch(url, {
 
 <code class="language-json">{
     &quot;data&quot;: {
-        &quot;id&quot;: 214,
-        &quot;title&quot;: &quot;rerum&quot;,
+        &quot;id&quot;: 219,
+        &quot;title&quot;: &quot;voluptatem&quot;,
         &quot;body&quot;: [],
-        &quot;created_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;
+        &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
     }
 }</code>
  </pre>
@@ -1467,18 +1619,18 @@ fetch(url, {
 <code class="language-json">{
     &quot;data&quot;: [
         {
-            &quot;name&quot;: &quot;Flossie Romaguera&quot;,
-            &quot;email&quot;: &quot;hilario31@example.com&quot;,
+            &quot;name&quot;: &quot;Sydni Bashirian&quot;,
+            &quot;email&quot;: &quot;hannah.goldner@example.net&quot;,
             &quot;password&quot;: &quot;$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi&quot;,
-            &quot;created_at&quot;: &quot;2022-07-11T08:26:21.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-07-11T08:26:21.000000Z&quot;
+            &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
         },
         {
-            &quot;name&quot;: &quot;Queenie Kshlerin&quot;,
-            &quot;email&quot;: &quot;rylan.schinner@example.org&quot;,
+            &quot;name&quot;: &quot;Brannon Stiedemann MD&quot;,
+            &quot;email&quot;: &quot;sadye.rempel@example.net&quot;,
             &quot;password&quot;: &quot;$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi&quot;,
-            &quot;created_at&quot;: &quot;2022-07-11T08:26:21.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-07-11T08:26:21.000000Z&quot;
+            &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
         }
     ]
 }</code>
@@ -1559,14 +1711,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://laravel-advance.test/api/v1/test/users/6" \
+    --get "http://laravel-advance.test/api/v1/test/users/3" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://laravel-advance.test/api/v1/test/users/6"
+    "http://laravel-advance.test/api/v1/test/users/3"
 );
 
 const headers = {
@@ -1589,11 +1741,11 @@ fetch(url, {
 
 <code class="language-json">{
     &quot;data&quot;: {
-        &quot;name&quot;: &quot;Mrs. Nakia Bednar III&quot;,
-        &quot;email&quot;: &quot;schuppe.franz@example.org&quot;,
+        &quot;name&quot;: &quot;Mr. Harvey Gorczany IV&quot;,
+        &quot;email&quot;: &quot;rasheed57@example.com&quot;,
         &quot;password&quot;: &quot;$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi&quot;,
-        &quot;created_at&quot;: &quot;2022-07-11T08:26:21.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-07-11T08:26:21.000000Z&quot;
+        &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
     }
 }</code>
  </pre>
@@ -1643,7 +1795,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="GETapi-v1-test-users--id-"
-               value="6"
+               value="3"
                data-component="url" hidden>
     <br>
 <p>User ID</p>
@@ -1704,11 +1856,11 @@ fetch(url, {
 
 <code class="language-json">{
     &quot;data&quot;: {
-        &quot;name&quot;: &quot;Cornelius Schumm&quot;,
-        &quot;email&quot;: &quot;boyer.burdette@example.org&quot;,
+        &quot;name&quot;: &quot;Paxton Thompson MD&quot;,
+        &quot;email&quot;: &quot;pattie10@example.com&quot;,
         &quot;password&quot;: &quot;$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi&quot;,
-        &quot;created_at&quot;: &quot;2022-07-11T08:26:21.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-07-11T08:26:21.000000Z&quot;
+        &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
     }
 }</code>
  </pre>
@@ -1829,11 +1981,11 @@ fetch(url, {
 
 <code class="language-json">{
     &quot;data&quot;: {
-        &quot;name&quot;: &quot;Lamar Harvey&quot;,
-        &quot;email&quot;: &quot;christian.sanford@example.org&quot;,
+        &quot;name&quot;: &quot;Mrs. Rita Bogisich&quot;,
+        &quot;email&quot;: &quot;hwaelchi@example.org&quot;,
         &quot;password&quot;: &quot;$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi&quot;,
-        &quot;created_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-07-11T08:26:22.000000Z&quot;
+        &quot;created_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-07-11T08:33:48.000000Z&quot;
     }
 }</code>
  </pre>

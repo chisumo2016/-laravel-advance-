@@ -10,23 +10,36 @@
     ],
     "info": {
         "name": "Blogpost",
-        "_postman_id": "f2306e3e-084f-443c-aefc-8ee306f8223a",
+        "_postman_id": "8f2c99bc-ba1d-4e7a-bb0a-f2c2475f87fe",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
-            "name": "Endpoints",
-            "description": "",
+            "name": "Comment Management",
+            "description": "APIs to manage comments",
             "item": [
                 {
-                    "name": "Display a listing of the resource.",
+                    "name": "Display a listing of comments.",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
                             "path": "api\/v1\/test\/comments",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/test\/comments"
+                            "query": [
+                                {
+                                    "key": "page_size",
+                                    "value": "20",
+                                    "description": "Size per page. Defaults to 20.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Page to view.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/test\/comments?page_size=20&page=1"
                         },
                         "method": "GET",
                         "header": [
@@ -40,43 +53,22 @@
                             }
                         ],
                         "body": null,
-                        "description": "",
+                        "description": "Gets a list of comments.",
                         "auth": {
                             "type": "noauth"
                         }
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "59"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
+                            "header": [],
                             "code": 200,
-                            "body": "{\"data\":[{\"id\":1,\"body\":[],\"user_id\":4,\"post_id\":93,\"created_at\":\"2022-07-10 18:03:47\",\"updated_at\":\"2022-07-10 18:03:47\"},{\"id\":2,\"body\":[],\"user_id\":3,\"post_id\":197,\"created_at\":\"2022-07-10 18:03:47\",\"updated_at\":\"2022-07-10 18:03:47\"},{\"id\":3,\"body\":[],\"user_id\":1,\"post_id\":122,\"created_at\":\"2022-07-10 18:03:47\",\"updated_at\":\"2022-07-10 18:03:47\"}]}",
-                            "name": ""
+                            "body": "{\"data\":[{\"id\":4,\"title\":null,\"body\":[],\"created_at\":\"2022-07-11T08:33:47.000000Z\",\"updated_at\":\"2022-07-11T08:33:47.000000Z\"},{\"id\":5,\"title\":null,\"body\":[],\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"}]}",
+                            "name": "0"
                         }
                     ]
                 },
                 {
-                    "name": "Display the specified resource.",
+                    "name": "Display the specified comment.",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -111,36 +103,15 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "58"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
+                            "header": [],
                             "code": 200,
-                            "body": "{\"data\":{\"id\":1,\"body\":[],\"user_id\":4,\"post_id\":93,\"created_at\":\"2022-07-10 18:03:47\",\"updated_at\":\"2022-07-10 18:03:47\"}}",
-                            "name": ""
+                            "body": "{\"data\":{\"id\":6,\"body\":[],\"user_id\":1,\"post_id\":185,\"created_at\":\"2022-07-11 08:33:48\",\"updated_at\":\"2022-07-11 08:33:48\"}}",
+                            "name": "0"
                         }
                     ]
                 },
                 {
-                    "name": "Store a newly created resource in storage.",
+                    "name": "Store a newly created comment in storage.",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -159,16 +130,26 @@
                                 "value": "application\/json"
                             }
                         ],
-                        "body": null,
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"body\":[\"This comment is super beautiful\"],\"user_id\":1,\"post_id\":1}"
+                        },
                         "description": "",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":7,\"body\":[],\"user_id\":7,\"post_id\":82,\"created_at\":\"2022-07-11 08:33:48\",\"updated_at\":\"2022-07-11 08:33:48\"}}",
+                            "name": "0"
+                        }
+                    ]
                 },
                 {
-                    "name": "Update the specified resource in storage.",
+                    "name": "Update the specified comment in storage.",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -195,16 +176,26 @@
                                 "value": "application\/json"
                             }
                         ],
-                        "body": null,
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"body\":[\"This comment is super beautiful\"],\"user_id\":1,\"post_id\":1}"
+                        },
                         "description": "",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":8,\"body\":[],\"user_id\":6,\"post_id\":132,\"created_at\":\"2022-07-11 08:33:48\",\"updated_at\":\"2022-07-11 08:33:48\"}}",
+                            "name": "0"
+                        }
+                    ]
                 },
                 {
-                    "name": "Remove the specified resource from storage.",
+                    "name": "Remove the specified comment from storage.",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -237,8 +228,21 @@
                             "type": "noauth"
                         }
                     },
-                    "response": []
-                },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"data\": \"success\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
                 {
                     "name": "api\/user",
                     "request": {
@@ -336,7 +340,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"data\":[{\"id\":210,\"title\":\"dolor\",\"body\":[],\"created_at\":\"2022-07-11T08:26:22.000000Z\",\"updated_at\":\"2022-07-11T08:26:22.000000Z\"},{\"id\":211,\"title\":\"porro\",\"body\":[],\"created_at\":\"2022-07-11T08:26:22.000000Z\",\"updated_at\":\"2022-07-11T08:26:22.000000Z\"}]}",
+                            "body": "{\"data\":[{\"id\":215,\"title\":\"omnis\",\"body\":[],\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"},{\"id\":216,\"title\":\"tempore\",\"body\":[],\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"}]}",
                             "name": "0"
                         }
                     ]
@@ -379,7 +383,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"data\":{\"id\":212,\"title\":\"aut\",\"body\":[],\"created_at\":\"2022-07-11T08:26:22.000000Z\",\"updated_at\":\"2022-07-11T08:26:22.000000Z\"}}",
+                            "body": "{\"data\":{\"id\":217,\"title\":\"incidunt\",\"body\":[],\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"}}",
                             "name": "0"
                         }
                     ]
@@ -417,7 +421,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"data\":{\"id\":213,\"title\":\"exercitationem\",\"body\":[],\"created_at\":\"2022-07-11T08:26:22.000000Z\",\"updated_at\":\"2022-07-11T08:26:22.000000Z\"}}",
+                            "body": "{\"data\":{\"id\":218,\"title\":\"et\",\"body\":[],\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"}}",
                             "name": "0"
                         }
                     ]
@@ -463,7 +467,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"data\":{\"id\":214,\"title\":\"rerum\",\"body\":[],\"created_at\":\"2022-07-11T08:26:22.000000Z\",\"updated_at\":\"2022-07-11T08:26:22.000000Z\"}}",
+                            "body": "{\"data\":{\"id\":219,\"title\":\"voluptatem\",\"body\":[],\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"}}",
                             "name": "0"
                         }
                     ]
@@ -560,7 +564,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"data\":[{\"name\":\"Flossie Romaguera\",\"email\":\"hilario31@example.com\",\"password\":\"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\\\/.og\\\/at2.uheWG\\\/igi\",\"created_at\":\"2022-07-11T08:26:21.000000Z\",\"updated_at\":\"2022-07-11T08:26:21.000000Z\"},{\"name\":\"Queenie Kshlerin\",\"email\":\"rylan.schinner@example.org\",\"password\":\"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\\\/.og\\\/at2.uheWG\\\/igi\",\"created_at\":\"2022-07-11T08:26:21.000000Z\",\"updated_at\":\"2022-07-11T08:26:21.000000Z\"}]}",
+                            "body": "{\"data\":[{\"name\":\"Sydni Bashirian\",\"email\":\"hannah.goldner@example.net\",\"password\":\"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\\\/.og\\\/at2.uheWG\\\/igi\",\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"},{\"name\":\"Brannon Stiedemann MD\",\"email\":\"sadye.rempel@example.net\",\"password\":\"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\\\/.og\\\/at2.uheWG\\\/igi\",\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"}]}",
                             "name": "0"
                         }
                     ]
@@ -577,7 +581,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "6",
+                                    "value": "3",
                                     "description": "User ID"
                                 }
                             ]
@@ -603,7 +607,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"data\":{\"name\":\"Mrs. Nakia Bednar III\",\"email\":\"schuppe.franz@example.org\",\"password\":\"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\\\/.og\\\/at2.uheWG\\\/igi\",\"created_at\":\"2022-07-11T08:26:21.000000Z\",\"updated_at\":\"2022-07-11T08:26:21.000000Z\"}}",
+                            "body": "{\"data\":{\"name\":\"Mr. Harvey Gorczany IV\",\"email\":\"rasheed57@example.com\",\"password\":\"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\\\/.og\\\/at2.uheWG\\\/igi\",\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"}}",
                             "name": "0"
                         }
                     ]
@@ -641,7 +645,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"data\":{\"name\":\"Cornelius Schumm\",\"email\":\"boyer.burdette@example.org\",\"password\":\"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\\\/.og\\\/at2.uheWG\\\/igi\",\"created_at\":\"2022-07-11T08:26:21.000000Z\",\"updated_at\":\"2022-07-11T08:26:21.000000Z\"}}",
+                            "body": "{\"data\":{\"name\":\"Paxton Thompson MD\",\"email\":\"pattie10@example.com\",\"password\":\"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\\\/.og\\\/at2.uheWG\\\/igi\",\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"}}",
                             "name": "0"
                         }
                     ]
@@ -687,7 +691,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"data\":{\"name\":\"Lamar Harvey\",\"email\":\"christian.sanford@example.org\",\"password\":\"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\\\/.og\\\/at2.uheWG\\\/igi\",\"created_at\":\"2022-07-11T08:26:22.000000Z\",\"updated_at\":\"2022-07-11T08:26:22.000000Z\"}}",
+                            "body": "{\"data\":{\"name\":\"Mrs. Rita Bogisich\",\"email\":\"hwaelchi@example.org\",\"password\":\"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\\\/.og\\\/at2.uheWG\\\/igi\",\"created_at\":\"2022-07-11T08:33:48.000000Z\",\"updated_at\":\"2022-07-11T08:33:48.000000Z\"}}",
                             "name": "0"
                         }
                     ]

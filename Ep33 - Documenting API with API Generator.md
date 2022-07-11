@@ -38,3 +38,7 @@
     [X] Scribe will interact with our database . To show in api documentation
     [X] Clear our database . php artisan migrate:fresh --seed
             
+      NB: Remember to generate other API    Post , Comment and User
+
+    Scribe is an amazing packagees that helps us to generate documenntation in a beutiful webpage.
+    We use the '@' directive in PHPDocs to providee details about our API endpoints .

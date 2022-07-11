@@ -1,15 +1,15 @@
-name: 'Post Management'
+name: 'User Management'
 description: |-
 
-  APIs to manage the post resource.
+  APIs to manage the user resource.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/v1/test/posts
+    uri: api/v1/test/users
     metadata:
-      title: 'Display a listing of the posts.'
-      description: 'Gets a list of posts.'
+      title: 'Display a listing of users.'
+      description: 'Gets a list of users.'
       authenticated: false
       custom: []
     headers:
@@ -35,14 +35,14 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":215,"title":"omnis","body":[],"created_at":"2022-07-11T08:33:48.000000Z","updated_at":"2022-07-11T08:33:48.000000Z"},{"id":216,"title":"tempore","body":[],"created_at":"2022-07-11T08:33:48.000000Z","updated_at":"2022-07-11T08:33:48.000000Z"}]}'
+        content: '{"data":[{"name":"Sydni Bashirian","email":"hannah.goldner@example.net","password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi","created_at":"2022-07-11T08:33:48.000000Z","updated_at":"2022-07-11T08:33:48.000000Z"},{"name":"Brannon Stiedemann MD","email":"sadye.rempel@example.net","password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi","created_at":"2022-07-11T08:33:48.000000Z","updated_at":"2022-07-11T08:33:48.000000Z"}]}'
         headers: []
         description: '0'
     responseFields: []
   -
     httpMethods:
       - GET
-    uri: 'api/v1/test/posts/{id}'
+    uri: 'api/v1/test/users/{id}'
     metadata:
       title: 'Display the specified resource.'
       description: ''
@@ -54,9 +54,9 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the post.'
+        description: 'User ID'
         required: true
-        example: 1
+        example: 3
         type: integer
         custom: []
     queryParameters: []
@@ -64,16 +64,16 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":217,"title":"incidunt","body":[],"created_at":"2022-07-11T08:33:48.000000Z","updated_at":"2022-07-11T08:33:48.000000Z"}}'
+        content: '{"data":{"name":"Mr. Harvey Gorczany IV","email":"rasheed57@example.com","password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi","created_at":"2022-07-11T08:33:48.000000Z","updated_at":"2022-07-11T08:33:48.000000Z"}}'
         headers: []
         description: '0'
     responseFields: []
   -
     httpMethods:
       - POST
-    uri: api/v1/test/posts
+    uri: api/v1/test/users
     metadata:
-      title: 'Store a newly created resource in storage.'
+      title: ''
       description: ''
       authenticated: false
       custom: []
@@ -83,43 +83,33 @@ endpoints:
     urlParameters: []
     queryParameters: []
     bodyParameters:
-      title:
-        name: title
-        description: 'Title of the post.'
+      name:
+        name: name
+        description: 'Name of the user.'
         required: true
-        example: 'Tourism Post'
+        example: 'John Doe'
         type: string
         custom: []
-      body:
-        name: body
-        description: 'Body of the post.'
+      email:
+        name: email
+        description: 'Email of the user.'
         required: true
-        example:
-          - 'This post is  for tourism'
-        type: 'string[]'
-        custom: []
-      user_ids:
-        name: user_ids
-        description: 'The author ids of the post.'
-        required: true
-        example:
-          - 1
-          - 2
-        type: 'integer[]'
+        example: doe@doe.com
+        type: string
         custom: []
     responses:
       -
         status: 200
-        content: '{"data":{"id":218,"title":"et","body":[],"created_at":"2022-07-11T08:33:48.000000Z","updated_at":"2022-07-11T08:33:48.000000Z"}}'
+        content: '{"data":{"name":"Paxton Thompson MD","email":"pattie10@example.com","password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi","created_at":"2022-07-11T08:33:48.000000Z","updated_at":"2022-07-11T08:33:48.000000Z"}}'
         headers: []
         description: '0'
     responseFields: []
   -
     httpMethods:
       - PATCH
-    uri: 'api/v1/test/posts/{id}'
+    uri: 'api/v1/test/users/{id}'
     metadata:
-      title: 'Update the specified post in storage.'
+      title: 'Update the specified resource in storage.'
       description: ''
       authenticated: false
       custom: []
@@ -129,51 +119,44 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the post.'
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer
         custom: []
     queryParameters: []
     bodyParameters:
-      title:
-        name: title
-        description: 'Title of the post.'
+      name:
+        name: name
+        description: 'Name of the user.'
         required: true
-        example: 'Amazing Post'
+        example: 'John Doe'
         type: string
         custom: []
-      body:
-        name: body
-        description: 'Body of the post.'
+      email:
+        name: email
+        description: 'Email of the user.'
         required: true
-        example:
-          - 'This post is super beautiful'
-        type: 'string[]'
-        custom: []
-      user_ids:
-        name: user_ids
-        description: 'The author ids of the post.'
-        required: true
-        example:
-          - 1
-          - 2
-        type: 'integer[]'
+        example: doe@doe.com
+        type: string
         custom: []
     responses:
       -
         status: 200
-        content: '{"data":{"id":219,"title":"voluptatem","body":[],"created_at":"2022-07-11T08:33:48.000000Z","updated_at":"2022-07-11T08:33:48.000000Z"}}'
+        content: '{"data":{"name":"Mrs. Rita Bogisich","email":"hwaelchi@example.org","password":"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC\/.og\/at2.uheWG\/igi","created_at":"2022-07-11T08:33:48.000000Z","updated_at":"2022-07-11T08:33:48.000000Z"}}'
         headers: []
         description: '0'
     responseFields: []
   -
     httpMethods:
       - DELETE
-    uri: 'api/v1/test/posts/{id}'
+    uri: 'api/v1/test/users/{id}'
     metadata:
-      title: 'Remove the specified post from storage.'
-      description: ''
+      title: 'Remove the specified resource from storage.'
+      description: |-
+        @response 200 {
+        "data": "success"
+        }
       authenticated: false
       custom: []
     headers:
@@ -182,20 +165,12 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the post.'
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer
         custom: []
     queryParameters: []
     bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-          "data": "success"
-          }
-        headers: []
-        description: '200'
+    responses: []
     responseFields: []

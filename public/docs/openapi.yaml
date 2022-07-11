@@ -9,9 +9,29 @@ servers:
 paths:
   /api/v1/test/comments:
     get:
-      summary: 'Display a listing of the resource.'
-      description: ''
+      summary: 'Display a listing of comments.'
+      description: 'Gets a list of comments.'
       parameters:
+        -
+          in: query
+          name: page_size
+          description: 'Size per page. Defaults to 20.'
+          example: 20
+          required: false
+          schema:
+            type: integer
+            description: 'Size per page. Defaults to 20.'
+            example: 20
+        -
+          in: query
+          name: page
+          description: 'Page to view.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'Page to view.'
+            example: 1
         -
           in: header
           name: Content-Type
@@ -28,7 +48,7 @@ paths:
             type: string
       responses:
         200:
-          description: ''
+          description: '0'
           content:
             application/json:
               schema:
@@ -36,58 +56,40 @@ paths:
                 example:
                   data:
                     -
-                      id: 1
+                      id: 4
+                      title: null
                       body: []
-                      user_id: 4
-                      post_id: 93
-                      created_at: '2022-07-10 18:03:47'
-                      updated_at: '2022-07-10 18:03:47'
+                      created_at: '2022-07-11T08:33:47.000000Z'
+                      updated_at: '2022-07-11T08:33:47.000000Z'
                     -
-                      id: 2
+                      id: 5
+                      title: null
                       body: []
-                      user_id: 3
-                      post_id: 197
-                      created_at: '2022-07-10 18:03:47'
-                      updated_at: '2022-07-10 18:03:47'
-                    -
-                      id: 3
-                      body: []
-                      user_id: 1
-                      post_id: 122
-                      created_at: '2022-07-10 18:03:47'
-                      updated_at: '2022-07-10 18:03:47'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
                 properties:
                   data:
                     type: array
                     example:
                       -
-                        id: 1
+                        id: 4
+                        title: null
                         body: []
-                        user_id: 4
-                        post_id: 93
-                        created_at: '2022-07-10 18:03:47'
-                        updated_at: '2022-07-10 18:03:47'
+                        created_at: '2022-07-11T08:33:47.000000Z'
+                        updated_at: '2022-07-11T08:33:47.000000Z'
                       -
-                        id: 2
+                        id: 5
+                        title: null
                         body: []
-                        user_id: 3
-                        post_id: 197
-                        created_at: '2022-07-10 18:03:47'
-                        updated_at: '2022-07-10 18:03:47'
-                      -
-                        id: 3
-                        body: []
-                        user_id: 1
-                        post_id: 122
-                        created_at: '2022-07-10 18:03:47'
-                        updated_at: '2022-07-10 18:03:47'
+                        created_at: '2022-07-11T08:33:48.000000Z'
+                        updated_at: '2022-07-11T08:33:48.000000Z'
                     items:
                       type: object
       tags:
-        - Endpoints
+        - 'Comment Management'
       security: []
     post:
-      summary: 'Store a newly created resource in storage.'
+      summary: 'Store a newly created comment in storage.'
       description: ''
       parameters:
         -
@@ -104,13 +106,177 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 7
+                    body: []
+                    user_id: 7
+                    post_id: 82
+                    created_at: '2022-07-11 08:33:48'
+                    updated_at: '2022-07-11 08:33:48'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 7
+                      body: []
+                      user_id: 7
+                      post_id: 82
+                      created_at: '2022-07-11 08:33:48'
+                      updated_at: '2022-07-11 08:33:48'
       tags:
-        - Endpoints
+        - 'Comment Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: array
+                  description: 'Body of the comment.'
+                  example:
+                    - 'This comment is super beautiful'
+                  items:
+                    type: string
+                user_id:
+                  type: integer
+                  description: 'The author id of the comment.'
+                  example: 1
+                post_id:
+                  type: integer
+                  description: 'The post id that the comment belongs to.'
+                  example: 1
+              required:
+                - body
+                - user_id
+                - post_id
       security: []
   '/api/v1/test/comments/{id}':
     get:
-      summary: 'Display the specified resource.'
+      summary: 'Display the specified comment.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 6
+                    body: []
+                    user_id: 1
+                    post_id: 185
+                    created_at: '2022-07-11 08:33:48'
+                    updated_at: '2022-07-11 08:33:48'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 6
+                      body: []
+                      user_id: 1
+                      post_id: 185
+                      created_at: '2022-07-11 08:33:48'
+                      updated_at: '2022-07-11 08:33:48'
+      tags:
+        - 'Comment Management'
+      security: []
+    patch:
+      summary: 'Update the specified comment in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 8
+                    body: []
+                    user_id: 6
+                    post_id: 132
+                    created_at: '2022-07-11 08:33:48'
+                    updated_at: '2022-07-11 08:33:48'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 8
+                      body: []
+                      user_id: 6
+                      post_id: 132
+                      created_at: '2022-07-11 08:33:48'
+                      updated_at: '2022-07-11 08:33:48'
+      tags:
+        - 'Comment Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: array
+                  description: 'Body of the comment.'
+                  example:
+                    - 'This comment is super beautiful'
+                  items:
+                    type: string
+                user_id:
+                  type: integer
+                  description: 'The author id of the comment.'
+                  example: 1
+                post_id:
+                  type: integer
+                  description: 'The post id that the comment belongs to.'
+                  example: 1
+      security: []
+    delete:
+      summary: 'Remove the specified comment from storage.'
       description: ''
       parameters:
         -
@@ -135,69 +301,13 @@ paths:
               schema:
                 type: object
                 example:
-                  data:
-                    id: 1
-                    body: []
-                    user_id: 4
-                    post_id: 93
-                    created_at: '2022-07-10 18:03:47'
-                    updated_at: '2022-07-10 18:03:47'
+                  data: success
                 properties:
                   data:
-                    type: object
-                    example:
-                      id: 1
-                      body: []
-                      user_id: 4
-                      post_id: 93
-                      created_at: '2022-07-10 18:03:47'
-                      updated_at: '2022-07-10 18:03:47'
+                    type: string
+                    example: success
       tags:
-        - Endpoints
-      security: []
-    patch:
-      summary: 'Update the specified resource in storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-      security: []
-    delete:
-      summary: 'Remove the specified resource from storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
+        - 'Comment Management'
       security: []
     parameters:
       -
@@ -292,33 +402,33 @@ paths:
                 example:
                   data:
                     -
-                      id: 210
-                      title: dolor
+                      id: 215
+                      title: omnis
                       body: []
-                      created_at: '2022-07-11T08:26:22.000000Z'
-                      updated_at: '2022-07-11T08:26:22.000000Z'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
                     -
-                      id: 211
-                      title: porro
+                      id: 216
+                      title: tempore
                       body: []
-                      created_at: '2022-07-11T08:26:22.000000Z'
-                      updated_at: '2022-07-11T08:26:22.000000Z'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
                 properties:
                   data:
                     type: array
                     example:
                       -
-                        id: 210
-                        title: dolor
+                        id: 215
+                        title: omnis
                         body: []
-                        created_at: '2022-07-11T08:26:22.000000Z'
-                        updated_at: '2022-07-11T08:26:22.000000Z'
+                        created_at: '2022-07-11T08:33:48.000000Z'
+                        updated_at: '2022-07-11T08:33:48.000000Z'
                       -
-                        id: 211
-                        title: porro
+                        id: 216
+                        title: tempore
                         body: []
-                        created_at: '2022-07-11T08:26:22.000000Z'
-                        updated_at: '2022-07-11T08:26:22.000000Z'
+                        created_at: '2022-07-11T08:33:48.000000Z'
+                        updated_at: '2022-07-11T08:33:48.000000Z'
                     items:
                       type: object
       tags:
@@ -351,20 +461,20 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 213
-                    title: exercitationem
+                    id: 218
+                    title: et
                     body: []
-                    created_at: '2022-07-11T08:26:22.000000Z'
-                    updated_at: '2022-07-11T08:26:22.000000Z'
+                    created_at: '2022-07-11T08:33:48.000000Z'
+                    updated_at: '2022-07-11T08:33:48.000000Z'
                 properties:
                   data:
                     type: object
                     example:
-                      id: 213
-                      title: exercitationem
+                      id: 218
+                      title: et
                       body: []
-                      created_at: '2022-07-11T08:26:22.000000Z'
-                      updated_at: '2022-07-11T08:26:22.000000Z'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
       tags:
         - 'Post Management'
       requestBody:
@@ -426,20 +536,20 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 212
-                    title: aut
+                    id: 217
+                    title: incidunt
                     body: []
-                    created_at: '2022-07-11T08:26:22.000000Z'
-                    updated_at: '2022-07-11T08:26:22.000000Z'
+                    created_at: '2022-07-11T08:33:48.000000Z'
+                    updated_at: '2022-07-11T08:33:48.000000Z'
                 properties:
                   data:
                     type: object
                     example:
-                      id: 212
-                      title: aut
+                      id: 217
+                      title: incidunt
                       body: []
-                      created_at: '2022-07-11T08:26:22.000000Z'
-                      updated_at: '2022-07-11T08:26:22.000000Z'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
       tags:
         - 'Post Management'
       security: []
@@ -470,20 +580,20 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 214
-                    title: rerum
+                    id: 219
+                    title: voluptatem
                     body: []
-                    created_at: '2022-07-11T08:26:22.000000Z'
-                    updated_at: '2022-07-11T08:26:22.000000Z'
+                    created_at: '2022-07-11T08:33:48.000000Z'
+                    updated_at: '2022-07-11T08:33:48.000000Z'
                 properties:
                   data:
                     type: object
                     example:
-                      id: 214
-                      title: rerum
+                      id: 219
+                      title: voluptatem
                       body: []
-                      created_at: '2022-07-11T08:26:22.000000Z'
-                      updated_at: '2022-07-11T08:26:22.000000Z'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
       tags:
         - 'Post Management'
       requestBody:
@@ -609,33 +719,33 @@ paths:
                 example:
                   data:
                     -
-                      name: 'Flossie Romaguera'
-                      email: hilario31@example.com
+                      name: 'Sydni Bashirian'
+                      email: hannah.goldner@example.net
                       password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                      created_at: '2022-07-11T08:26:21.000000Z'
-                      updated_at: '2022-07-11T08:26:21.000000Z'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
                     -
-                      name: 'Queenie Kshlerin'
-                      email: rylan.schinner@example.org
+                      name: 'Brannon Stiedemann MD'
+                      email: sadye.rempel@example.net
                       password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                      created_at: '2022-07-11T08:26:21.000000Z'
-                      updated_at: '2022-07-11T08:26:21.000000Z'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
                 properties:
                   data:
                     type: array
                     example:
                       -
-                        name: 'Flossie Romaguera'
-                        email: hilario31@example.com
+                        name: 'Sydni Bashirian'
+                        email: hannah.goldner@example.net
                         password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                        created_at: '2022-07-11T08:26:21.000000Z'
-                        updated_at: '2022-07-11T08:26:21.000000Z'
+                        created_at: '2022-07-11T08:33:48.000000Z'
+                        updated_at: '2022-07-11T08:33:48.000000Z'
                       -
-                        name: 'Queenie Kshlerin'
-                        email: rylan.schinner@example.org
+                        name: 'Brannon Stiedemann MD'
+                        email: sadye.rempel@example.net
                         password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                        created_at: '2022-07-11T08:26:21.000000Z'
-                        updated_at: '2022-07-11T08:26:21.000000Z'
+                        created_at: '2022-07-11T08:33:48.000000Z'
+                        updated_at: '2022-07-11T08:33:48.000000Z'
                     items:
                       type: object
       tags:
@@ -668,20 +778,20 @@ paths:
                 type: object
                 example:
                   data:
-                    name: 'Cornelius Schumm'
-                    email: boyer.burdette@example.org
+                    name: 'Paxton Thompson MD'
+                    email: pattie10@example.com
                     password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                    created_at: '2022-07-11T08:26:21.000000Z'
-                    updated_at: '2022-07-11T08:26:21.000000Z'
+                    created_at: '2022-07-11T08:33:48.000000Z'
+                    updated_at: '2022-07-11T08:33:48.000000Z'
                 properties:
                   data:
                     type: object
                     example:
-                      name: 'Cornelius Schumm'
-                      email: boyer.burdette@example.org
+                      name: 'Paxton Thompson MD'
+                      email: pattie10@example.com
                       password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                      created_at: '2022-07-11T08:26:21.000000Z'
-                      updated_at: '2022-07-11T08:26:21.000000Z'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
       tags:
         - 'User Management'
       requestBody:
@@ -731,20 +841,20 @@ paths:
                 type: object
                 example:
                   data:
-                    name: 'Mrs. Nakia Bednar III'
-                    email: schuppe.franz@example.org
+                    name: 'Mr. Harvey Gorczany IV'
+                    email: rasheed57@example.com
                     password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                    created_at: '2022-07-11T08:26:21.000000Z'
-                    updated_at: '2022-07-11T08:26:21.000000Z'
+                    created_at: '2022-07-11T08:33:48.000000Z'
+                    updated_at: '2022-07-11T08:33:48.000000Z'
                 properties:
                   data:
                     type: object
                     example:
-                      name: 'Mrs. Nakia Bednar III'
-                      email: schuppe.franz@example.org
+                      name: 'Mr. Harvey Gorczany IV'
+                      email: rasheed57@example.com
                       password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                      created_at: '2022-07-11T08:26:21.000000Z'
-                      updated_at: '2022-07-11T08:26:21.000000Z'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
       tags:
         - 'User Management'
       security: []
@@ -775,20 +885,20 @@ paths:
                 type: object
                 example:
                   data:
-                    name: 'Lamar Harvey'
-                    email: christian.sanford@example.org
+                    name: 'Mrs. Rita Bogisich'
+                    email: hwaelchi@example.org
                     password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                    created_at: '2022-07-11T08:26:22.000000Z'
-                    updated_at: '2022-07-11T08:26:22.000000Z'
+                    created_at: '2022-07-11T08:33:48.000000Z'
+                    updated_at: '2022-07-11T08:33:48.000000Z'
                 properties:
                   data:
                     type: object
                     example:
-                      name: 'Lamar Harvey'
-                      email: christian.sanford@example.org
+                      name: 'Mrs. Rita Bogisich'
+                      email: hwaelchi@example.org
                       password: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
-                      created_at: '2022-07-11T08:26:22.000000Z'
-                      updated_at: '2022-07-11T08:26:22.000000Z'
+                      created_at: '2022-07-11T08:33:48.000000Z'
+                      updated_at: '2022-07-11T08:33:48.000000Z'
       tags:
         - 'User Management'
       requestBody:
@@ -837,11 +947,14 @@ paths:
         in: path
         name: id
         description: 'User ID'
-        example: 6
+        example: 3
         required: true
         schema:
           type: integer
 tags:
+  -
+    name: 'Comment Management'
+    description: 'APIs to manage comments'
   -
     name: Endpoints
     description: ''
