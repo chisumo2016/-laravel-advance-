@@ -30,6 +30,26 @@ Route::get('/reset-password/{token}', function ($token){
     ->name('password.reset');
 
 if (\Illuminate\Support\Facades\App::environment('local')){
+
+    Lang::setLocale('es');
+    App::setLocale('es');
+    $trans = Lang::get('auth.failed');
+
+    $trans = __('auth.password') ;
+    $trans = __('auth.throttle', ['seconds' => 5]) ;
+
+    /** Current locale*/
+    dump(\Illuminate\Support\Facades\App::currentLocale());
+    dump(App::isLocal('en'));
+
+    $trans = __('tannzania') ;
+    $trans = trans_choice('auth.pants', 1);
+    $trans = trans_choice('auth.apples', -1,['baskets'=>2]);
+    $trans = __('auth.welcome', ['name' => 'sam']);
+
+    dd($trans);
+
+
     Route::get('/playground', function () {
        $user = \App\Models\User::factory()->make();
         \Illuminate\Support\Facades\Mail::to($user)
