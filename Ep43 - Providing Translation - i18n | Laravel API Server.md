@@ -2,7 +2,7 @@
     [X] We put all the translation files inside the folder:
             Folder:  lang   
                      lang/en
-    [X] Is the folder where we put the translatiion files
+    [X] Is the folder where we put the translatiion files i  our project
     [X] create a folder called es and copy the  php files fromm en folder
     [X] Two main ways to get the translations keys .
             1: Use the Lang Facades

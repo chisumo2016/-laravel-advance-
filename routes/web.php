@@ -31,23 +31,41 @@ Route::get('/reset-password/{token}', function ($token){
 
 if (\Illuminate\Support\Facades\App::environment('local')){
 
-    Lang::setLocale('es');
-    App::setLocale('es');
-    $trans = Lang::get('auth.failed');
+//     Lang::setLocale('es');
+//    App::setLocale('es');
+//    $trans = Lang::get('auth.failed');
+//
+//    $trans = __('auth.password') ;
+//    $trans = __('auth.throttle', ['seconds' => 5]) ;
+//
+//    /** Current locale*/
+//    dump(\Illuminate\Support\Facades\App::currentLocale());
+//    dump(App::isLocal('en'));
+//
+//    $trans = __('tannzania') ;
+//    $trans = trans_choice('auth.pants', 1);
+//    $trans = trans_choice('auth.apples', -1,['baskets'=>2]);
+//    $trans = __('auth.welcome', ['name' => 'sam']);
+//
+//    dd($trans);*
 
-    $trans = __('auth.password') ;
-    $trans = __('auth.throttle', ['seconds' => 5]) ;
+    Route::get('/shared/posts/{post}' , function (\Illuminate\Http\Request $request, \App\Models\Post $post){
+        return  "Specially made just for you Post Post ID :{$post->id}";
 
-    /** Current locale*/
-    dump(\Illuminate\Support\Facades\App::currentLocale());
-    dump(App::isLocal('en'));
+    })->name('share.post')->middleware('signed');
 
-    $trans = __('tannzania') ;
-    $trans = trans_choice('auth.pants', 1);
-    $trans = trans_choice('auth.apples', -1,['baskets'=>2]);
-    $trans = __('auth.welcome', ['name' => 'sam']);
+    Route::get('/shared/videos/{video}' , function (\Illuminate\Http\Request $request, $video){
+        if (!$request->hasValidSignature()){
+            abort(401);
+        }
 
-    dd($trans);
+        return 'good';
+    })->name('share.video');
+
+    Route::get('/playground2', function () {
+        $url = URL::temporarySignedRoute('share.video',now()->addSeconds(30),['video' => 123]);
+        return $url;
+    });
 
 
     Route::get('/playground', function () {

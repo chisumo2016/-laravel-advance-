@@ -16,6 +16,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
+
 /**
  * @group  Post Management
  *
@@ -116,6 +117,26 @@ class PostController extends Controller
         $deletedPost = $repository->forceDelete($post);
         return  new  JsonResponse([
             'data' =>'success'
+        ]);
+    }
+
+    /**
+     * Remove the specified post from storage.
+     * @response 200 {
+     * "data": "signed url..."
+     * }
+     * @param Request $request
+     * @param \App\Models\Post $post
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function share(Request $request, Post $post)
+    {
+        $url = \URL::tomporarySignedRoute('shared.post', now()->addDay(30), [
+            'post' => $post->id,
+        ]);
+
+        return  new  JsonResponse([
+            'data' => $url
         ]);
     }
 }
