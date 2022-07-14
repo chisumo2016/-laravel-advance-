@@ -62,9 +62,9 @@ if (\Illuminate\Support\Facades\App::environment('local')){
         return 'good';
     })->name('share.video');
 
-    Route::get('/playground2', function () {
+    Route::get('/playground', function () {
 
-        event(new  \App\Events\PlayGroundEvent());
+        event(new  \App\Events\ChatMessageEvent());
 
         //$url = URL::temporarySignedRoute('share.video',now()->addSeconds(30),['video' => 123]);
         //return $url;
@@ -72,11 +72,20 @@ if (\Illuminate\Support\Facades\App::environment('local')){
     });
 
 
-    Route::get('/playground', function () {
+    Route::get('/playground2', function () {
        $user = \App\Models\User::factory()->make();
         \Illuminate\Support\Facades\Mail::to($user)
             ->send(new \App\Mail\WelcomeMail($user));
         return null;
+    });
+
+    Route::get('/ws', function (){
+        return view('websocket');
+    });
+
+    Route::post('/chat-message',function (\Illuminate\Http\Request $request) {
+            event(new \App\Events\ChatMessageEvent($request->message));
+            return null ;
     });
 }
 
