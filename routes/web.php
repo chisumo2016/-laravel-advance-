@@ -63,8 +63,12 @@ if (\Illuminate\Support\Facades\App::environment('local')){
     })->name('share.video');
 
     Route::get('/playground2', function () {
-        $url = URL::temporarySignedRoute('share.video',now()->addSeconds(30),['video' => 123]);
-        return $url;
+
+        event(new  \App\Events\PlayGroundEvent());
+
+        //$url = URL::temporarySignedRoute('share.video',now()->addSeconds(30),['video' => 123]);
+        //return $url;
+        return null;
     });
 
 
