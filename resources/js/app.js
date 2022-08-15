@@ -13,9 +13,64 @@ form.addEventListener('submit', function (event) {
     });
 });
 
+//Login inn private change
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+}
+
+function request(url, options) {
+    // get cookie
+    const csrfToken = getCookie('XSRF-TOKEN');
+    return fetch(url, {
+        headers: {
+            'content-type': 'application/json',
+            'accept': 'application/json',
+            'X-XSRF-TOKEN': decodeURIComponent(csrfToken),
+        },
+        credentials: 'include',
+        ...options,
+    })
+}
+
+function logout() {
+    return request('/logout', {
+        method: 'POST'
+    });
+}
+
+function login(email, password) {
+
+    return fetch('/sanctum/csrf-cookie', {
+        headers: {
+            'content-type': 'application/json',
+            'accept': 'application/json'
+        },
+        credentials: 'include'
+    }).then(() => logout())
+        .then(() => {
+            return request('/login', {
+                method: "POST",
+                body: JSON.stringify({
+                    email: email,
+                    'password': password
+                })
+            });
+        }).then(() => {
+            document.getElementById('section-login').classList.add('hide')
+            document.getElementById('section-chat').classList.remove('hide')
+        })
+
+}
+
 
 //Connect to our channel
-const channel = Echo.channel('public.chat.1');
+const channel = Echo.private('private.chat.1');
+//const channel = Echo.channel('public.chat.1');
 
 channel.subscribed(() => {
     console.log('subscribed');
